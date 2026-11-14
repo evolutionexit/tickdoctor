@@ -1,0 +1,14 @@
+**/node_modules
+**/dist
+**/.next
+**/*.tsbuildinfo
+**/coverage
+**/.turbo
+.git
+.env
+.env.*
+**/.DS_Store
+agent
+e2e
+docs
+apps/api

@@ -1,0 +1,63 @@
+{
+ "ok": true,
+ "endpoint": "events",
+ "count": 2,
+ "items": [
+  {
+   "receivedAt": "2026-11-09T12:05:28.209Z",
+   "keyId": "stub",
+   "body": {
+    "schemaVersion": 1,
+    "agentVersion": "0.1.1",
+    "sentAt": "2026-11-09T12:05:28.198Z",
+    "bootId": "13e587c0-4f0e-4210-bce5-3e91b877aa83",
+    "payload": {
+     "events": [
+      {
+       "type": "server_stop",
+       "ts": "2026-11-09T11:58:38.548Z",
+       "reason": "shutdown"
+      },
+      {
+       "type": "server_start",
+       "ts": "2026-11-09T12:04:57.301Z",
+       "uncleanPreviousShutdown": false
+      },
+      {
+       "type": "plugins_changed",
+       "ts": "2026-11-09T12:04:58.033Z",
+       "added": [],
+       "removed": [],
+       "updated": [
+        {
+         "name": "TickDoctor",
+         "from": "0.1.0",
+         "to": "0.1.1"
+        }
+       ]
+      }
+     ]
+    }
+   }
+  },
+  {
+   "receivedAt": "2026-11-09T12:14:11.564Z",
+   "keyId": "stub",
+   "body": {
+    "schemaVersion": 1,
+    "agentVersion": "0.1.1",
+    "sentAt": "2026-11-09T12:14:11.570Z",
+    "bootId": "13e587c0-4f0e-4210-bce5-3e91b877aa83",
+    "payload": {
+     "events": [
+      {
+       "type": "server_stop",
+       "ts": "2026-11-09T12:14:11.567Z",
+       "reason": "shutdown"
+      }
+     ]
+    }
+   }
+  }
+ ]
+}

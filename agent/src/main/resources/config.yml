@@ -1,0 +1,25 @@
+# TickDoctor agent configuration.
+# After editing, run /tickdoctor reload (no restart needed).
+
+# Your server's own API key (td_live_...) from the TickDoctor dashboard. Required: while empty the plugin stays idle.
+api-key: ""
+
+# Where to send data. Use the address from the config snippet in the TickDoctor app.
+api-url: "http://localhost:4000"
+
+# How often a metrics sample is sent (5-300). The API may adjust this remotely.
+metrics-interval-seconds: 10
+
+# hashed or none: both are accepted and currently mean the same. No player identifiers are sent
+# at all (only the player count and bare ping values). IP addresses are never sent in any mode.
+privacy-mode: hashed
+
+# Send a lag snapshot when the 5-second MSPT p95 stays above this many milliseconds (20-1000)
+# for about 5 seconds. 50 ms = the server can no longer hold 20 TPS.
+snapshot-mspt-threshold: 50
+
+# Max size of the on-disk buffer used while the API is unreachable; oldest data is dropped first.
+buffer-max-mb: 50
+
+# Log a one-line summary of every request (not the full JSON). For troubleshooting.
+debug-log-payloads: false

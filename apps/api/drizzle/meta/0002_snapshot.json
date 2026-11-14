@@ -1,0 +1,2486 @@
+{
+  "id": "7d4bd657-e8b0-4417-a6c7-3634f9ab3e9c",
+  "prevId": "c2770228-9c24-454d-8d92-6820f850bec5",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.api_keys": {
+      "name": "api_keys",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "server_id": {
+          "name": "server_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "key_hash": {
+          "name": "key_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "prefix": {
+          "name": "prefix",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "revoked_at": {
+          "name": "revoked_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "api_keys_server_idx": {
+          "name": "api_keys_server_idx",
+          "columns": [
+            {
+              "expression": "server_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "api_keys_server_id_servers_id_fk": {
+          "name": "api_keys_server_id_servers_id_fk",
+          "tableFrom": "api_keys",
+          "tableTo": "servers",
+          "columnsFrom": [
+            "server_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "api_keys_key_hash_unique": {
+          "name": "api_keys_key_hash_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "key_hash"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.events": {
+      "name": "events",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "bigserial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "server_id": {
+          "name": "server_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ts": {
+          "name": "ts",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "type": {
+          "name": "type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "data": {
+          "name": "data",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "event_hash": {
+          "name": "event_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "received_at": {
+          "name": "received_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "events_server_hash_uq": {
+          "name": "events_server_hash_uq",
+          "columns": [
+            {
+              "expression": "server_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "event_hash",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "events_server_ts_idx": {
+          "name": "events_server_ts_idx",
+          "columns": [
+            {
+              "expression": "server_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "ts",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "events_server_id_servers_id_fk": {
+          "name": "events_server_id_servers_id_fk",
+          "tableFrom": "events",
+          "tableTo": "servers",
+          "columnsFrom": [
+            "server_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.finding_incidents": {
+      "name": "finding_incidents",
+      "schema": "",
+      "columns": {
+        "finding_id": {
+          "name": "finding_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "incident_id": {
+          "name": "incident_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "finding_incidents_incident_idx": {
+          "name": "finding_incidents_incident_idx",
+          "columns": [
+            {
+              "expression": "incident_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "finding_incidents_finding_id_findings_id_fk": {
+          "name": "finding_incidents_finding_id_findings_id_fk",
+          "tableFrom": "finding_incidents",
+          "tableTo": "findings",
+          "columnsFrom": [
+            "finding_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "finding_incidents_incident_id_incidents_id_fk": {
+          "name": "finding_incidents_incident_id_incidents_id_fk",
+          "tableFrom": "finding_incidents",
+          "tableTo": "incidents",
+          "columnsFrom": [
+            "incident_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "finding_incidents_finding_id_incident_id_pk": {
+          "name": "finding_incidents_finding_id_incident_id_pk",
+          "columns": [
+            "finding_id",
+            "incident_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.findings": {
+      "name": "findings",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "server_id": {
+          "name": "server_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "rule_id": {
+          "name": "rule_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "scope": {
+          "name": "scope",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "dedup_key": {
+          "name": "dedup_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "severity": {
+          "name": "severity",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "explanation": {
+          "name": "explanation",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "evidence": {
+          "name": "evidence",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "suggested_fix": {
+          "name": "suggested_fix",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'open'"
+        },
+        "occurrence_count": {
+          "name": "occurrence_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 1
+        },
+        "first_seen_at": {
+          "name": "first_seen_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "last_seen_at": {
+          "name": "last_seen_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "marked_fixed_at": {
+          "name": "marked_fixed_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "confirmed_fixed_at": {
+          "name": "confirmed_fixed_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "resolved_by": {
+          "name": "resolved_by",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "findings_active_uq": {
+          "name": "findings_active_uq",
+          "columns": [
+            {
+              "expression": "server_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "rule_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "dedup_key",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "where": "\"findings\".\"status\" <> 'confirmed_fixed'",
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "findings_server_seen_idx": {
+          "name": "findings_server_seen_idx",
+          "columns": [
+            {
+              "expression": "server_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "last_seen_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "findings_active_status_idx": {
+          "name": "findings_active_status_idx",
+          "columns": [
+            {
+              "expression": "status",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "scope",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "where": "\"findings\".\"status\" <> 'confirmed_fixed'",
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "findings_confirmed_idx": {
+          "name": "findings_confirmed_idx",
+          "columns": [
+            {
+              "expression": "confirmed_fixed_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "findings_server_id_servers_id_fk": {
+          "name": "findings_server_id_servers_id_fk",
+          "tableFrom": "findings",
+          "tableTo": "servers",
+          "columnsFrom": [
+            "server_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "findings_status_check": {
+          "name": "findings_status_check",
+          "value": "\"findings\".\"status\" in ('open', 'marked_fixed', 'confirmed_fixed')"
+        },
+        "findings_scope_check": {
+          "name": "findings_scope_check",
+          "value": "\"findings\".\"scope\" in ('incident', 'server')"
+        },
+        "findings_severity_check": {
+          "name": "findings_severity_check",
+          "value": "\"findings\".\"severity\" in ('info', 'low', 'medium', 'high', 'critical')"
+        },
+        "findings_resolved_by_check": {
+          "name": "findings_resolved_by_check",
+          "value": "\"findings\".\"resolved_by\" in ('owner', 'auto')"
+        },
+        "findings_occurrence_check": {
+          "name": "findings_occurrence_check",
+          "value": "\"findings\".\"occurrence_count\" >= 1"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.incident_snapshots": {
+      "name": "incident_snapshots",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "server_id": {
+          "name": "server_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "incident_id": {
+          "name": "incident_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "trigger": {
+          "name": "trigger",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "captured_at": {
+          "name": "captured_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "received_at": {
+          "name": "received_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "mspt_p95_at_trigger": {
+          "name": "mspt_p95_at_trigger",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "snapshot": {
+          "name": "snapshot",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "baseline": {
+          "name": "baseline",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "incident_snapshots_server_captured_uq": {
+          "name": "incident_snapshots_server_captured_uq",
+          "columns": [
+            {
+              "expression": "server_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "captured_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "incident_snapshots_incident_idx": {
+          "name": "incident_snapshots_incident_idx",
+          "columns": [
+            {
+              "expression": "incident_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "incident_snapshots_server_id_servers_id_fk": {
+          "name": "incident_snapshots_server_id_servers_id_fk",
+          "tableFrom": "incident_snapshots",
+          "tableTo": "servers",
+          "columnsFrom": [
+            "server_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "incident_snapshots_incident_id_incidents_id_fk": {
+          "name": "incident_snapshots_incident_id_incidents_id_fk",
+          "tableFrom": "incident_snapshots",
+          "tableTo": "incidents",
+          "columnsFrom": [
+            "incident_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.incidents": {
+      "name": "incidents",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "server_id": {
+          "name": "server_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "started_at": {
+          "name": "started_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ended_at": {
+          "name": "ended_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "end_reason": {
+          "name": "end_reason",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "severity": {
+          "name": "severity",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "peak_mspt_p95": {
+          "name": "peak_mspt_p95",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "source": {
+          "name": "source",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "baseline": {
+          "name": "baseline",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rules_evaluated_at": {
+          "name": "rules_evaluated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "opened_at": {
+          "name": "opened_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "closed_at": {
+          "name": "closed_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "snapshot_requested_at": {
+          "name": "snapshot_requested_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "incidents_server_started_idx": {
+          "name": "incidents_server_started_idx",
+          "columns": [
+            {
+              "expression": "server_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "started_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "incidents_one_open_per_server_uq": {
+          "name": "incidents_one_open_per_server_uq",
+          "columns": [
+            {
+              "expression": "server_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "where": "\"incidents\".\"ended_at\" is null",
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "incidents_ended_idx": {
+          "name": "incidents_ended_idx",
+          "columns": [
+            {
+              "expression": "ended_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "incidents_rules_pending_idx": {
+          "name": "incidents_rules_pending_idx",
+          "columns": [
+            {
+              "expression": "closed_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "where": "\"incidents\".\"rules_evaluated_at\" is null or \"incidents\".\"rules_evaluated_at\" < \"incidents\".\"closed_at\"",
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "incidents_server_id_servers_id_fk": {
+          "name": "incidents_server_id_servers_id_fk",
+          "tableFrom": "incidents",
+          "tableTo": "servers",
+          "columnsFrom": [
+            "server_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "incidents_end_reason_check": {
+          "name": "incidents_end_reason_check",
+          "value": "\"incidents\".\"end_reason\" in ('recovered', 'offline')"
+        },
+        "incidents_severity_check": {
+          "name": "incidents_severity_check",
+          "value": "\"incidents\".\"severity\" in ('medium', 'high', 'critical')"
+        },
+        "incidents_source_check": {
+          "name": "incidents_source_check",
+          "value": "\"incidents\".\"source\" in ('raw', 'rollup_1m')"
+        },
+        "incidents_end_consistent": {
+          "name": "incidents_end_consistent",
+          "value": "(\"incidents\".\"ended_at\" is null) = (\"incidents\".\"end_reason\" is null)"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.job_state": {
+      "name": "job_state",
+      "schema": "",
+      "columns": {
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "watermark": {
+          "name": "watermark",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.metric_rollups_1h": {
+      "name": "metric_rollups_1h",
+      "schema": "",
+      "columns": {
+        "server_id": {
+          "name": "server_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "bucket": {
+          "name": "bucket",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sample_count": {
+          "name": "sample_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tps_1m_avg": {
+          "name": "tps_1m_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tps_1m_min": {
+          "name": "tps_1m_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tps_1m_max": {
+          "name": "tps_1m_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_avg_avg": {
+          "name": "mspt_avg_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_avg_min": {
+          "name": "mspt_avg_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_avg_max": {
+          "name": "mspt_avg_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_p95_avg": {
+          "name": "mspt_p95_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_p95_min": {
+          "name": "mspt_p95_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_p95_max": {
+          "name": "mspt_p95_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_p99_avg": {
+          "name": "mspt_p99_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_p99_min": {
+          "name": "mspt_p99_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_p99_max": {
+          "name": "mspt_p99_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_max_avg": {
+          "name": "mspt_max_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_max_min": {
+          "name": "mspt_max_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_max_max": {
+          "name": "mspt_max_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "slow_ticks_avg": {
+          "name": "slow_ticks_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "slow_ticks_min": {
+          "name": "slow_ticks_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "slow_ticks_max": {
+          "name": "slow_ticks_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "players_avg": {
+          "name": "players_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "players_min": {
+          "name": "players_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "players_max": {
+          "name": "players_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ping_avg_avg": {
+          "name": "ping_avg_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ping_avg_min": {
+          "name": "ping_avg_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ping_avg_max": {
+          "name": "ping_avg_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "heap_used_bytes_avg": {
+          "name": "heap_used_bytes_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "heap_used_bytes_min": {
+          "name": "heap_used_bytes_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "heap_used_bytes_max": {
+          "name": "heap_used_bytes_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "heap_max_bytes_avg": {
+          "name": "heap_max_bytes_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "heap_max_bytes_min": {
+          "name": "heap_max_bytes_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "heap_max_bytes_max": {
+          "name": "heap_max_bytes_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gc_pause_ms_avg": {
+          "name": "gc_pause_ms_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gc_pause_ms_min": {
+          "name": "gc_pause_ms_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gc_pause_ms_max": {
+          "name": "gc_pause_ms_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "process_cpu_avg": {
+          "name": "process_cpu_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "process_cpu_min": {
+          "name": "process_cpu_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "process_cpu_max": {
+          "name": "process_cpu_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "loaded_chunks_avg": {
+          "name": "loaded_chunks_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "loaded_chunks_min": {
+          "name": "loaded_chunks_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "loaded_chunks_max": {
+          "name": "loaded_chunks_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "entities_avg": {
+          "name": "entities_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "entities_min": {
+          "name": "entities_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "entities_max": {
+          "name": "entities_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tile_entities_avg": {
+          "name": "tile_entities_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tile_entities_min": {
+          "name": "tile_entities_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tile_entities_max": {
+          "name": "tile_entities_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "chunk_gen_per_min_avg": {
+          "name": "chunk_gen_per_min_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "chunk_gen_per_min_min": {
+          "name": "chunk_gen_per_min_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "chunk_gen_per_min_max": {
+          "name": "chunk_gen_per_min_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "host_cpu_avg": {
+          "name": "host_cpu_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "host_cpu_min": {
+          "name": "host_cpu_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "host_cpu_max": {
+          "name": "host_cpu_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cpu_temp_c_avg": {
+          "name": "cpu_temp_c_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cpu_temp_c_min": {
+          "name": "cpu_temp_c_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cpu_temp_c_max": {
+          "name": "cpu_temp_c_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mem_available_bytes_avg": {
+          "name": "mem_available_bytes_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mem_available_bytes_min": {
+          "name": "mem_available_bytes_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mem_available_bytes_max": {
+          "name": "mem_available_bytes_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "swap_used_bytes_avg": {
+          "name": "swap_used_bytes_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "swap_used_bytes_min": {
+          "name": "swap_used_bytes_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "swap_used_bytes_max": {
+          "name": "swap_used_bytes_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "disk_used_bytes_avg": {
+          "name": "disk_used_bytes_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "disk_used_bytes_min": {
+          "name": "disk_used_bytes_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "disk_used_bytes_max": {
+          "name": "disk_used_bytes_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "agent_ms_per_tick_avg": {
+          "name": "agent_ms_per_tick_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "agent_ms_per_tick_min": {
+          "name": "agent_ms_per_tick_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "agent_ms_per_tick_max": {
+          "name": "agent_ms_per_tick_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "metric_rollups_1h_server_id_servers_id_fk": {
+          "name": "metric_rollups_1h_server_id_servers_id_fk",
+          "tableFrom": "metric_rollups_1h",
+          "tableTo": "servers",
+          "columnsFrom": [
+            "server_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "metric_rollups_1h_server_id_bucket_pk": {
+          "name": "metric_rollups_1h_server_id_bucket_pk",
+          "columns": [
+            "server_id",
+            "bucket"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.metric_rollups_1m": {
+      "name": "metric_rollups_1m",
+      "schema": "",
+      "columns": {
+        "server_id": {
+          "name": "server_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "bucket": {
+          "name": "bucket",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sample_count": {
+          "name": "sample_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tps_1m_avg": {
+          "name": "tps_1m_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tps_1m_min": {
+          "name": "tps_1m_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tps_1m_max": {
+          "name": "tps_1m_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_avg_avg": {
+          "name": "mspt_avg_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_avg_min": {
+          "name": "mspt_avg_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_avg_max": {
+          "name": "mspt_avg_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_p95_avg": {
+          "name": "mspt_p95_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_p95_min": {
+          "name": "mspt_p95_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_p95_max": {
+          "name": "mspt_p95_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_p99_avg": {
+          "name": "mspt_p99_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_p99_min": {
+          "name": "mspt_p99_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_p99_max": {
+          "name": "mspt_p99_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_max_avg": {
+          "name": "mspt_max_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_max_min": {
+          "name": "mspt_max_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_max_max": {
+          "name": "mspt_max_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "slow_ticks_avg": {
+          "name": "slow_ticks_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "slow_ticks_min": {
+          "name": "slow_ticks_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "slow_ticks_max": {
+          "name": "slow_ticks_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "players_avg": {
+          "name": "players_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "players_min": {
+          "name": "players_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "players_max": {
+          "name": "players_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ping_avg_avg": {
+          "name": "ping_avg_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ping_avg_min": {
+          "name": "ping_avg_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ping_avg_max": {
+          "name": "ping_avg_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "heap_used_bytes_avg": {
+          "name": "heap_used_bytes_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "heap_used_bytes_min": {
+          "name": "heap_used_bytes_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "heap_used_bytes_max": {
+          "name": "heap_used_bytes_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "heap_max_bytes_avg": {
+          "name": "heap_max_bytes_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "heap_max_bytes_min": {
+          "name": "heap_max_bytes_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "heap_max_bytes_max": {
+          "name": "heap_max_bytes_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gc_pause_ms_avg": {
+          "name": "gc_pause_ms_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gc_pause_ms_min": {
+          "name": "gc_pause_ms_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gc_pause_ms_max": {
+          "name": "gc_pause_ms_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "process_cpu_avg": {
+          "name": "process_cpu_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "process_cpu_min": {
+          "name": "process_cpu_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "process_cpu_max": {
+          "name": "process_cpu_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "loaded_chunks_avg": {
+          "name": "loaded_chunks_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "loaded_chunks_min": {
+          "name": "loaded_chunks_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "loaded_chunks_max": {
+          "name": "loaded_chunks_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "entities_avg": {
+          "name": "entities_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "entities_min": {
+          "name": "entities_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "entities_max": {
+          "name": "entities_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tile_entities_avg": {
+          "name": "tile_entities_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tile_entities_min": {
+          "name": "tile_entities_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tile_entities_max": {
+          "name": "tile_entities_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "chunk_gen_per_min_avg": {
+          "name": "chunk_gen_per_min_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "chunk_gen_per_min_min": {
+          "name": "chunk_gen_per_min_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "chunk_gen_per_min_max": {
+          "name": "chunk_gen_per_min_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "host_cpu_avg": {
+          "name": "host_cpu_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "host_cpu_min": {
+          "name": "host_cpu_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "host_cpu_max": {
+          "name": "host_cpu_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cpu_temp_c_avg": {
+          "name": "cpu_temp_c_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cpu_temp_c_min": {
+          "name": "cpu_temp_c_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cpu_temp_c_max": {
+          "name": "cpu_temp_c_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mem_available_bytes_avg": {
+          "name": "mem_available_bytes_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mem_available_bytes_min": {
+          "name": "mem_available_bytes_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mem_available_bytes_max": {
+          "name": "mem_available_bytes_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "swap_used_bytes_avg": {
+          "name": "swap_used_bytes_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "swap_used_bytes_min": {
+          "name": "swap_used_bytes_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "swap_used_bytes_max": {
+          "name": "swap_used_bytes_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "disk_used_bytes_avg": {
+          "name": "disk_used_bytes_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "disk_used_bytes_min": {
+          "name": "disk_used_bytes_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "disk_used_bytes_max": {
+          "name": "disk_used_bytes_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "agent_ms_per_tick_avg": {
+          "name": "agent_ms_per_tick_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "agent_ms_per_tick_min": {
+          "name": "agent_ms_per_tick_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "agent_ms_per_tick_max": {
+          "name": "agent_ms_per_tick_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "metric_rollups_1m_server_id_servers_id_fk": {
+          "name": "metric_rollups_1m_server_id_servers_id_fk",
+          "tableFrom": "metric_rollups_1m",
+          "tableTo": "servers",
+          "columnsFrom": [
+            "server_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "metric_rollups_1m_server_id_bucket_pk": {
+          "name": "metric_rollups_1m_server_id_bucket_pk",
+          "columns": [
+            "server_id",
+            "bucket"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.metric_samples": {
+      "name": "metric_samples",
+      "schema": "",
+      "columns": {
+        "server_id": {
+          "name": "server_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ts": {
+          "name": "ts",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "received_at": {
+          "name": "received_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "tps_1m": {
+          "name": "tps_1m",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_avg": {
+          "name": "mspt_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_p95": {
+          "name": "mspt_p95",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_p99": {
+          "name": "mspt_p99",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mspt_max": {
+          "name": "mspt_max",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "slow_ticks": {
+          "name": "slow_ticks",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "players": {
+          "name": "players",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ping_avg": {
+          "name": "ping_avg",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "heap_used_bytes": {
+          "name": "heap_used_bytes",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "heap_max_bytes": {
+          "name": "heap_max_bytes",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gc_pause_ms": {
+          "name": "gc_pause_ms",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "process_cpu": {
+          "name": "process_cpu",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "loaded_chunks": {
+          "name": "loaded_chunks",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "entities": {
+          "name": "entities",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tile_entities": {
+          "name": "tile_entities",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "chunk_gen_per_min": {
+          "name": "chunk_gen_per_min",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "host_cpu": {
+          "name": "host_cpu",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cpu_temp_c": {
+          "name": "cpu_temp_c",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mem_available_bytes": {
+          "name": "mem_available_bytes",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "swap_used_bytes": {
+          "name": "swap_used_bytes",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "disk_used_bytes": {
+          "name": "disk_used_bytes",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "agent_ms_per_tick": {
+          "name": "agent_ms_per_tick",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "detail": {
+          "name": "detail",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "metric_samples_received_idx": {
+          "name": "metric_samples_received_idx",
+          "columns": [
+            {
+              "expression": "received_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "metric_samples_server_id_servers_id_fk": {
+          "name": "metric_samples_server_id_servers_id_fk",
+          "tableFrom": "metric_samples",
+          "tableTo": "servers",
+          "columnsFrom": [
+            "server_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "metric_samples_server_id_ts_pk": {
+          "name": "metric_samples_server_id_ts_pk",
+          "columns": [
+            "server_id",
+            "ts"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.plugin_inventory_history": {
+      "name": "plugin_inventory_history",
+      "schema": "",
+      "columns": {
+        "server_id": {
+          "name": "server_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "plugin": {
+          "name": "plugin",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "version": {
+          "name": "version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "first_seen": {
+          "name": "first_seen",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "last_seen": {
+          "name": "last_seen",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "plugin_inventory_history_server_id_servers_id_fk": {
+          "name": "plugin_inventory_history_server_id_servers_id_fk",
+          "tableFrom": "plugin_inventory_history",
+          "tableTo": "servers",
+          "columnsFrom": [
+            "server_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "plugin_inventory_history_server_id_plugin_version_pk": {
+          "name": "plugin_inventory_history_server_id_plugin_version_pk",
+          "columns": [
+            "server_id",
+            "plugin",
+            "version"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.server_analysis_state": {
+      "name": "server_analysis_state",
+      "schema": "",
+      "columns": {
+        "server_id": {
+          "name": "server_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "detector_watermark": {
+          "name": "detector_watermark",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "streak_start": {
+          "name": "streak_start",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "streak_peak": {
+          "name": "streak_peak",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "server_rules_at": {
+          "name": "server_rules_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "last_hello_at": {
+          "name": "last_hello_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "server_analysis_state_server_id_servers_id_fk": {
+          "name": "server_analysis_state_server_id_servers_id_fk",
+          "tableFrom": "server_analysis_state",
+          "tableTo": "servers",
+          "columnsFrom": [
+            "server_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.server_info_history": {
+      "name": "server_info_history",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "bigserial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "server_id": {
+          "name": "server_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "valid_from": {
+          "name": "valid_from",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "valid_to": {
+          "name": "valid_to",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "info": {
+          "name": "info",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "info_hash": {
+          "name": "info_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "server_info_history_server_idx": {
+          "name": "server_info_history_server_idx",
+          "columns": [
+            {
+              "expression": "server_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "valid_from",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "server_info_history_current_uq": {
+          "name": "server_info_history_current_uq",
+          "columns": [
+            {
+              "expression": "server_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "where": "\"server_info_history\".\"valid_to\" is null",
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "server_info_history_server_id_servers_id_fk": {
+          "name": "server_info_history_server_id_servers_id_fk",
+          "tableFrom": "server_info_history",
+          "tableTo": "servers",
+          "columnsFrom": [
+            "server_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.servers": {
+      "name": "servers",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "owner_id": {
+          "name": "owner_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "slug": {
+          "name": "slug",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "plan": {
+          "name": "plan",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'free'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "last_seen_at": {
+          "name": "last_seen_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "boot_id": {
+          "name": "boot_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "snapshot_requested_at": {
+          "name": "snapshot_requested_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "servers_owner_idx": {
+          "name": "servers_owner_idx",
+          "columns": [
+            {
+              "expression": "owner_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "servers_owner_id_users_id_fk": {
+          "name": "servers_owner_id_users_id_fk",
+          "tableFrom": "servers",
+          "tableTo": "users",
+          "columnsFrom": [
+            "owner_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "servers_slug_unique": {
+          "name": "servers_slug_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "slug"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "servers_plan_check": {
+          "name": "servers_plan_check",
+          "value": "\"servers\".\"plan\" in ('free', 'pro', 'network')"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.users": {
+      "name": "users",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "display_name": {
+          "name": "display_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "users_email_unique": {
+          "name": "users_email_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "email"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "users_email_lowercase": {
+          "name": "users_email_lowercase",
+          "value": "\"users\".\"email\" = lower(\"users\".\"email\")"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.waitlist": {
+      "name": "waitlist",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "source": {
+          "name": "source",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "waitlist_email_unique": {
+          "name": "waitlist_email_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "email"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "waitlist_email_lowercase": {
+          "name": "waitlist_email_lowercase",
+          "value": "\"waitlist\".\"email\" = lower(\"waitlist\".\"email\")"
+        }
+      },
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

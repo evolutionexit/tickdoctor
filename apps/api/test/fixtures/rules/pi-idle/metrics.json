@@ -1,0 +1,1924 @@
+{
+ "samples": [
+  {
+   "ts": "2026-11-09T12:10:57.652Z",
+   "windowSeconds": 10,
+   "tick": {
+    "tps1m": 20,
+    "tps5m": 20,
+    "tps15m": 20,
+    "msptAvg": 0.144,
+    "msptP95": 0.274,
+    "msptP99": 0.497,
+    "msptMax": 0.536,
+    "tickCount": 200,
+    "slowTicks": []
+   },
+   "jvm": {
+    "heapUsedBytes": 332827552,
+    "heapCommittedBytes": 1073741824,
+    "heapMaxBytes": 3221225472,
+    "gcPauses": [
+     {
+      "collector": "G1 Young Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Concurrent GC",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Old Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     }
+    ],
+    "threadCount": 32,
+    "processCpuLoad": 0.0025
+   },
+   "world": [
+    {
+     "name": "world",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_nether",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_the_end",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    }
+   ],
+   "worstChunks": [],
+   "players": {
+    "count": 0,
+    "pings": []
+   },
+   "host": {
+    "cpuLoad1m": 0.22,
+    "cpuUsage": 0.0316,
+    "cpuTempC": 45.8,
+    "memTotalBytes": 8453963776,
+    "memAvailableBytes": 5966643200,
+    "swapTotalBytes": 2147467264,
+    "swapUsedBytes": 0,
+    "diskTotalBytes": 125417230336,
+    "diskUsedBytes": 26090254336,
+    "diskReadBytesPerSec": 0,
+    "diskWriteBytesPerSec": 6960.311,
+    "netRxBytesPerSec": 3827.012,
+    "netTxBytesPerSec": 1693.797
+   },
+   "agentOverhead": {
+    "mainThreadMsPerTick": 0.017,
+    "mainThreadMsMax": 0.341,
+    "asyncCpuMs": 5.537
+   }
+  },
+  {
+   "ts": "2026-11-09T12:11:07.656Z",
+   "windowSeconds": 10,
+   "tick": {
+    "tps1m": 20,
+    "tps5m": 20,
+    "tps15m": 20,
+    "msptAvg": 0.163,
+    "msptP95": 0.276,
+    "msptP99": 0.551,
+    "msptMax": 0.697,
+    "tickCount": 200,
+    "slowTicks": []
+   },
+   "jvm": {
+    "heapUsedBytes": 341216160,
+    "heapCommittedBytes": 1073741824,
+    "heapMaxBytes": 3221225472,
+    "gcPauses": [
+     {
+      "collector": "G1 Young Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Concurrent GC",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Old Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     }
+    ],
+    "threadCount": 32,
+    "processCpuLoad": 0.0025
+   },
+   "world": [
+    {
+     "name": "world",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_nether",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_the_end",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    }
+   ],
+   "worstChunks": [],
+   "players": {
+    "count": 0,
+    "pings": []
+   },
+   "host": {
+    "cpuLoad1m": 0.26,
+    "cpuUsage": 0.0323,
+    "cpuTempC": 45.8,
+    "memTotalBytes": 8453963776,
+    "memAvailableBytes": 5975572480,
+    "swapTotalBytes": 2147467264,
+    "swapUsedBytes": 0,
+    "diskTotalBytes": 125417230336,
+    "diskUsedBytes": 26090254336,
+    "diskReadBytesPerSec": 0,
+    "diskWriteBytesPerSec": 36848.08,
+    "netRxBytesPerSec": 2478.529,
+    "netTxBytesPerSec": 1443.876
+   },
+   "agentOverhead": {
+    "mainThreadMsPerTick": 0.02,
+    "mainThreadMsMax": 0.407,
+    "asyncCpuMs": 5.691
+   }
+  },
+  {
+   "ts": "2026-11-09T12:11:17.661Z",
+   "windowSeconds": 10,
+   "tick": {
+    "tps1m": 20,
+    "tps5m": 20,
+    "tps15m": 20,
+    "msptAvg": 0.164,
+    "msptP95": 0.215,
+    "msptP99": 0.509,
+    "msptMax": 0.518,
+    "tickCount": 200,
+    "slowTicks": []
+   },
+   "jvm": {
+    "heapUsedBytes": 349604768,
+    "heapCommittedBytes": 1073741824,
+    "heapMaxBytes": 3221225472,
+    "gcPauses": [
+     {
+      "collector": "G1 Young Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Concurrent GC",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Old Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     }
+    ],
+    "threadCount": 32,
+    "processCpuLoad": 0.0025
+   },
+   "world": [
+    {
+     "name": "world",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_nether",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_the_end",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    }
+   ],
+   "worstChunks": [],
+   "players": {
+    "count": 0,
+    "pings": []
+   },
+   "host": {
+    "cpuLoad1m": 0.22,
+    "cpuUsage": 0.0287,
+    "cpuTempC": 46.9,
+    "memTotalBytes": 8453963776,
+    "memAvailableBytes": 5972557824,
+    "swapTotalBytes": 2147467264,
+    "swapUsedBytes": 0,
+    "diskTotalBytes": 125417230336,
+    "diskUsedBytes": 26090254336,
+    "diskReadBytesPerSec": 0,
+    "diskWriteBytesPerSec": 2865.775,
+    "netRxBytesPerSec": 5048.589,
+    "netTxBytesPerSec": 2101.555
+   },
+   "agentOverhead": {
+    "mainThreadMsPerTick": 0.02,
+    "mainThreadMsMax": 0.361,
+    "asyncCpuMs": 6.158
+   }
+  },
+  {
+   "ts": "2026-11-09T12:11:27.665Z",
+   "windowSeconds": 10,
+   "tick": {
+    "tps1m": 20,
+    "tps5m": 20,
+    "tps15m": 20,
+    "msptAvg": 0.159,
+    "msptP95": 0.238,
+    "msptP99": 0.532,
+    "msptMax": 0.584,
+    "tickCount": 201,
+    "slowTicks": []
+   },
+   "jvm": {
+    "heapUsedBytes": 349604768,
+    "heapCommittedBytes": 1073741824,
+    "heapMaxBytes": 3221225472,
+    "gcPauses": [
+     {
+      "collector": "G1 Young Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Concurrent GC",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Old Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     }
+    ],
+    "threadCount": 32,
+    "processCpuLoad": 0.0025
+   },
+   "world": [
+    {
+     "name": "world",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_nether",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_the_end",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    }
+   ],
+   "worstChunks": [],
+   "players": {
+    "count": 0,
+    "pings": []
+   },
+   "host": {
+    "cpuLoad1m": 0.19,
+    "cpuUsage": 0.0313,
+    "cpuTempC": 45.8,
+    "memTotalBytes": 8453963776,
+    "memAvailableBytes": 5977931776,
+    "swapTotalBytes": 2147467264,
+    "swapUsedBytes": 0,
+    "diskTotalBytes": 125417230336,
+    "diskUsedBytes": 26090254336,
+    "diskReadBytesPerSec": 0,
+    "diskWriteBytesPerSec": 5731.989,
+    "netRxBytesPerSec": 2858.597,
+    "netTxBytesPerSec": 1512.264
+   },
+   "agentOverhead": {
+    "mainThreadMsPerTick": 0.021,
+    "mainThreadMsMax": 0.437,
+    "asyncCpuMs": 5.576
+   }
+  },
+  {
+   "ts": "2026-11-09T12:11:37.669Z",
+   "windowSeconds": 10,
+   "tick": {
+    "tps1m": 20,
+    "tps5m": 20,
+    "tps15m": 20,
+    "msptAvg": 0.163,
+    "msptP95": 0.263,
+    "msptP99": 0.559,
+    "msptMax": 0.702,
+    "tickCount": 200,
+    "slowTicks": []
+   },
+   "jvm": {
+    "heapUsedBytes": 357993376,
+    "heapCommittedBytes": 1073741824,
+    "heapMaxBytes": 3221225472,
+    "gcPauses": [
+     {
+      "collector": "G1 Young Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Concurrent GC",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Old Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     }
+    ],
+    "threadCount": 32,
+    "processCpuLoad": 0.005
+   },
+   "world": [
+    {
+     "name": "world",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_nether",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_the_end",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    }
+   ],
+   "worstChunks": [],
+   "players": {
+    "count": 0,
+    "pings": []
+   },
+   "host": {
+    "cpuLoad1m": 0.31,
+    "cpuUsage": 0.035,
+    "cpuTempC": 47.4,
+    "memTotalBytes": 8453963776,
+    "memAvailableBytes": 5976096768,
+    "swapTotalBytes": 2147467264,
+    "swapUsedBytes": 0,
+    "diskTotalBytes": 125417230336,
+    "diskUsedBytes": 26090258432,
+    "diskReadBytesPerSec": 0,
+    "diskWriteBytesPerSec": 13101.96,
+    "netRxBytesPerSec": 5339.864,
+    "netTxBytesPerSec": 2694.922
+   },
+   "agentOverhead": {
+    "mainThreadMsPerTick": 0.023,
+    "mainThreadMsMax": 0.544,
+    "asyncCpuMs": 5.758
+   }
+  },
+  {
+   "ts": "2026-11-09T12:11:47.673Z",
+   "windowSeconds": 10,
+   "tick": {
+    "tps1m": 20,
+    "tps5m": 20,
+    "tps15m": 20,
+    "msptAvg": 0.156,
+    "msptP95": 0.213,
+    "msptP99": 0.543,
+    "msptMax": 0.618,
+    "tickCount": 200,
+    "slowTicks": []
+   },
+   "jvm": {
+    "heapUsedBytes": 357993376,
+    "heapCommittedBytes": 1073741824,
+    "heapMaxBytes": 3221225472,
+    "gcPauses": [
+     {
+      "collector": "G1 Young Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Concurrent GC",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Old Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     }
+    ],
+    "threadCount": 32,
+    "processCpuLoad": 0
+   },
+   "world": [
+    {
+     "name": "world",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_nether",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_the_end",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    }
+   ],
+   "worstChunks": [],
+   "players": {
+    "count": 0,
+    "pings": []
+   },
+   "host": {
+    "cpuLoad1m": 0.26,
+    "cpuUsage": 0.0313,
+    "cpuTempC": 47.4,
+    "memTotalBytes": 8453963776,
+    "memAvailableBytes": 5972508672,
+    "swapTotalBytes": 2147467264,
+    "swapUsedBytes": 0,
+    "diskTotalBytes": 125417230336,
+    "diskUsedBytes": 26090258432,
+    "diskReadBytesPerSec": 0,
+    "diskWriteBytesPerSec": 33983.849,
+    "netRxBytesPerSec": 3388.209,
+    "netTxBytesPerSec": 1536.315
+   },
+   "agentOverhead": {
+    "mainThreadMsPerTick": 0.022,
+    "mainThreadMsMax": 0.474,
+    "asyncCpuMs": 5.193
+   }
+  },
+  {
+   "ts": "2026-11-09T12:11:57.677Z",
+   "windowSeconds": 10,
+   "tick": {
+    "tps1m": 20,
+    "tps5m": 20,
+    "tps15m": 20,
+    "msptAvg": 0.157,
+    "msptP95": 0.327,
+    "msptP99": 0.574,
+    "msptMax": 0.635,
+    "tickCount": 200,
+    "slowTicks": []
+   },
+   "jvm": {
+    "heapUsedBytes": 366381984,
+    "heapCommittedBytes": 1073741824,
+    "heapMaxBytes": 3221225472,
+    "gcPauses": [
+     {
+      "collector": "G1 Young Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Concurrent GC",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Old Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     }
+    ],
+    "threadCount": 32,
+    "processCpuLoad": 0
+   },
+   "world": [
+    {
+     "name": "world",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_nether",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_the_end",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    }
+   ],
+   "worstChunks": [],
+   "players": {
+    "count": 0,
+    "pings": []
+   },
+   "host": {
+    "cpuLoad1m": 0.22,
+    "cpuUsage": 0.039,
+    "cpuTempC": 46.9,
+    "memTotalBytes": 8453963776,
+    "memAvailableBytes": 5975654400,
+    "swapTotalBytes": 2147467264,
+    "swapUsedBytes": 0,
+    "diskTotalBytes": 125417230336,
+    "diskUsedBytes": 26090258432,
+    "diskReadBytesPerSec": 0,
+    "diskWriteBytesPerSec": 5732.194,
+    "netRxBytesPerSec": 3240.453,
+    "netTxBytesPerSec": 1675.455
+   },
+   "agentOverhead": {
+    "mainThreadMsPerTick": 0.023,
+    "mainThreadMsMax": 0.488,
+    "asyncCpuMs": 4.638
+   }
+  },
+  {
+   "ts": "2026-11-09T12:12:07.682Z",
+   "windowSeconds": 10,
+   "tick": {
+    "tps1m": 20,
+    "tps5m": 20,
+    "tps15m": 20,
+    "msptAvg": 0.118,
+    "msptP95": 0.167,
+    "msptP99": 0.536,
+    "msptMax": 0.617,
+    "tickCount": 200,
+    "slowTicks": []
+   },
+   "jvm": {
+    "heapUsedBytes": 374770592,
+    "heapCommittedBytes": 1073741824,
+    "heapMaxBytes": 3221225472,
+    "gcPauses": [
+     {
+      "collector": "G1 Young Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Concurrent GC",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Old Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     }
+    ],
+    "threadCount": 32,
+    "processCpuLoad": 0
+   },
+   "world": [
+    {
+     "name": "world",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_nether",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_the_end",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    }
+   ],
+   "worstChunks": [],
+   "players": {
+    "count": 0,
+    "pings": []
+   },
+   "host": {
+    "cpuLoad1m": 0.19,
+    "cpuUsage": 0.0301,
+    "cpuTempC": 45.8,
+    "memTotalBytes": 8453963776,
+    "memAvailableBytes": 5965611008,
+    "swapTotalBytes": 2147467264,
+    "swapUsedBytes": 0,
+    "diskTotalBytes": 125417230336,
+    "diskUsedBytes": 26090266624,
+    "diskReadBytesPerSec": 0,
+    "diskWriteBytesPerSec": 13509.713,
+    "netRxBytesPerSec": 4028.886,
+    "netTxBytesPerSec": 1628.446
+   },
+   "agentOverhead": {
+    "mainThreadMsPerTick": 0.021,
+    "mainThreadMsMax": 0.436,
+    "asyncCpuMs": 6.058
+   }
+  },
+  {
+   "ts": "2026-11-09T12:12:17.686Z",
+   "windowSeconds": 10,
+   "tick": {
+    "tps1m": 20,
+    "tps5m": 20,
+    "tps15m": 20,
+    "msptAvg": 0.126,
+    "msptP95": 0.197,
+    "msptP99": 0.551,
+    "msptMax": 0.595,
+    "tickCount": 200,
+    "slowTicks": []
+   },
+   "jvm": {
+    "heapUsedBytes": 374770592,
+    "heapCommittedBytes": 1073741824,
+    "heapMaxBytes": 3221225472,
+    "gcPauses": [
+     {
+      "collector": "G1 Young Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Concurrent GC",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Old Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     }
+    ],
+    "threadCount": 32,
+    "processCpuLoad": 0
+   },
+   "world": [
+    {
+     "name": "world",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_nether",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_the_end",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    }
+   ],
+   "worstChunks": [],
+   "players": {
+    "count": 0,
+    "pings": []
+   },
+   "host": {
+    "cpuLoad1m": 0.16,
+    "cpuUsage": 0.0316,
+    "cpuTempC": 46.9,
+    "memTotalBytes": 8453963776,
+    "memAvailableBytes": 5971378176,
+    "swapTotalBytes": 2147467264,
+    "swapUsedBytes": 0,
+    "diskTotalBytes": 125417230336,
+    "diskUsedBytes": 26090266624,
+    "diskReadBytesPerSec": 0,
+    "diskWriteBytesPerSec": 29479.618,
+    "netRxBytesPerSec": 2878.469,
+    "netTxBytesPerSec": 1688.437
+   },
+   "agentOverhead": {
+    "mainThreadMsPerTick": 0.023,
+    "mainThreadMsMax": 0.479,
+    "asyncCpuMs": 5.017
+   }
+  },
+  {
+   "ts": "2026-11-09T12:12:27.689Z",
+   "windowSeconds": 10,
+   "tick": {
+    "tps1m": 20,
+    "tps5m": 20,
+    "tps15m": 20,
+    "msptAvg": 0.11,
+    "msptP95": 0.165,
+    "msptP99": 0.548,
+    "msptMax": 0.662,
+    "tickCount": 200,
+    "slowTicks": []
+   },
+   "jvm": {
+    "heapUsedBytes": 383159200,
+    "heapCommittedBytes": 1073741824,
+    "heapMaxBytes": 3221225472,
+    "gcPauses": [
+     {
+      "collector": "G1 Young Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Concurrent GC",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Old Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     }
+    ],
+    "threadCount": 32,
+    "processCpuLoad": 0.1111
+   },
+   "world": [
+    {
+     "name": "world",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_nether",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_the_end",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    }
+   ],
+   "worstChunks": [],
+   "players": {
+    "count": 0,
+    "pings": []
+   },
+   "host": {
+    "cpuLoad1m": 0.13,
+    "cpuUsage": 0.0313,
+    "cpuTempC": 46.3,
+    "memTotalBytes": 8453963776,
+    "memAvailableBytes": 5969723392,
+    "swapTotalBytes": 2147467264,
+    "swapUsedBytes": 0,
+    "diskTotalBytes": 125417230336,
+    "diskUsedBytes": 26090266624,
+    "diskReadBytesPerSec": 0,
+    "diskWriteBytesPerSec": 2456.731,
+    "netRxBytesPerSec": 5412.986,
+    "netTxBytesPerSec": 1873.937
+   },
+   "agentOverhead": {
+    "mainThreadMsPerTick": 0.022,
+    "mainThreadMsMax": 0.55,
+    "asyncCpuMs": 4.494
+   }
+  },
+  {
+   "ts": "2026-11-09T12:12:37.693Z",
+   "windowSeconds": 10,
+   "tick": {
+    "tps1m": 20,
+    "tps5m": 20,
+    "tps15m": 20,
+    "msptAvg": 0.117,
+    "msptP95": 0.182,
+    "msptP99": 0.559,
+    "msptMax": 0.644,
+    "tickCount": 200,
+    "slowTicks": []
+   },
+   "jvm": {
+    "heapUsedBytes": 383159200,
+    "heapCommittedBytes": 1073741824,
+    "heapMaxBytes": 3221225472,
+    "gcPauses": [
+     {
+      "collector": "G1 Young Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Concurrent GC",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Old Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     }
+    ],
+    "threadCount": 32,
+    "processCpuLoad": 0
+   },
+   "world": [
+    {
+     "name": "world",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_nether",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_the_end",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    }
+   ],
+   "worstChunks": [],
+   "players": {
+    "count": 0,
+    "pings": []
+   },
+   "host": {
+    "cpuLoad1m": 0.11,
+    "cpuUsage": 0.0357,
+    "cpuTempC": 47.4,
+    "memTotalBytes": 8453963776,
+    "memAvailableBytes": 5972295680,
+    "swapTotalBytes": 2147467264,
+    "swapUsedBytes": 0,
+    "diskTotalBytes": 125417230336,
+    "diskUsedBytes": 26090266624,
+    "diskReadBytesPerSec": 0,
+    "diskWriteBytesPerSec": 8598.281,
+    "netRxBytesPerSec": 5968.496,
+    "netTxBytesPerSec": 2257.229
+   },
+   "agentOverhead": {
+    "mainThreadMsPerTick": 0.025,
+    "mainThreadMsMax": 0.544,
+    "asyncCpuMs": 5.238
+   }
+  },
+  {
+   "ts": "2026-11-09T12:12:47.697Z",
+   "windowSeconds": 10,
+   "tick": {
+    "tps1m": 20,
+    "tps5m": 20,
+    "tps15m": 20,
+    "msptAvg": 0.12,
+    "msptP95": 0.16,
+    "msptP99": 0.644,
+    "msptMax": 0.648,
+    "tickCount": 200,
+    "slowTicks": []
+   },
+   "jvm": {
+    "heapUsedBytes": 391547808,
+    "heapCommittedBytes": 1073741824,
+    "heapMaxBytes": 3221225472,
+    "gcPauses": [
+     {
+      "collector": "G1 Young Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Concurrent GC",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Old Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     }
+    ],
+    "threadCount": 32,
+    "processCpuLoad": 0
+   },
+   "world": [
+    {
+     "name": "world",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_nether",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_the_end",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    }
+   ],
+   "worstChunks": [],
+   "players": {
+    "count": 0,
+    "pings": []
+   },
+   "host": {
+    "cpuLoad1m": 0.1,
+    "cpuUsage": 0.034,
+    "cpuTempC": 46.9,
+    "memTotalBytes": 8453963776,
+    "memAvailableBytes": 5969117184,
+    "swapTotalBytes": 2147467264,
+    "swapUsedBytes": 0,
+    "diskTotalBytes": 125417230336,
+    "diskUsedBytes": 26090266624,
+    "diskReadBytesPerSec": 0,
+    "diskWriteBytesPerSec": 40534.697,
+    "netRxBytesPerSec": 2713.149,
+    "netTxBytesPerSec": 1472.829
+   },
+   "agentOverhead": {
+    "mainThreadMsPerTick": 0.027,
+    "mainThreadMsMax": 0.55,
+    "asyncCpuMs": 4.951
+   }
+  },
+  {
+   "ts": "2026-11-09T12:12:57.701Z",
+   "windowSeconds": 10,
+   "tick": {
+    "tps1m": 20,
+    "tps5m": 20,
+    "tps15m": 20,
+    "msptAvg": 0.116,
+    "msptP95": 0.153,
+    "msptP99": 0.586,
+    "msptMax": 0.603,
+    "tickCount": 200,
+    "slowTicks": []
+   },
+   "jvm": {
+    "heapUsedBytes": 399936416,
+    "heapCommittedBytes": 1073741824,
+    "heapMaxBytes": 3221225472,
+    "gcPauses": [
+     {
+      "collector": "G1 Young Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Concurrent GC",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Old Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     }
+    ],
+    "threadCount": 32,
+    "processCpuLoad": 0
+   },
+   "world": [
+    {
+     "name": "world",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_nether",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_the_end",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    }
+   ],
+   "worstChunks": [],
+   "players": {
+    "count": 0,
+    "pings": []
+   },
+   "host": {
+    "cpuLoad1m": 0.24,
+    "cpuUsage": 0.033,
+    "cpuTempC": 46.9,
+    "memTotalBytes": 8453963776,
+    "memAvailableBytes": 5976096768,
+    "swapTotalBytes": 2147467264,
+    "swapUsedBytes": 0,
+    "diskTotalBytes": 125417230336,
+    "diskUsedBytes": 26090266624,
+    "diskReadBytesPerSec": 0,
+    "diskWriteBytesPerSec": 4503.805,
+    "netRxBytesPerSec": 4052.185,
+    "netTxBytesPerSec": 1840.167
+   },
+   "agentOverhead": {
+    "mainThreadMsPerTick": 0.026,
+    "mainThreadMsMax": 0.497,
+    "asyncCpuMs": 4.935
+   }
+  },
+  {
+   "ts": "2026-11-09T12:13:07.705Z",
+   "windowSeconds": 10,
+   "tick": {
+    "tps1m": 20,
+    "tps5m": 20,
+    "tps15m": 20,
+    "msptAvg": 0.121,
+    "msptP95": 0.165,
+    "msptP99": 0.622,
+    "msptMax": 0.858,
+    "tickCount": 200,
+    "slowTicks": []
+   },
+   "jvm": {
+    "heapUsedBytes": 408325024,
+    "heapCommittedBytes": 1073741824,
+    "heapMaxBytes": 3221225472,
+    "gcPauses": [
+     {
+      "collector": "G1 Young Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Concurrent GC",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Old Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     }
+    ],
+    "threadCount": 32,
+    "processCpuLoad": 0
+   },
+   "world": [
+    {
+     "name": "world",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_nether",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_the_end",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    }
+   ],
+   "worstChunks": [],
+   "players": {
+    "count": 0,
+    "pings": []
+   },
+   "host": {
+    "cpuLoad1m": 0.2,
+    "cpuUsage": 0.0352,
+    "cpuTempC": 48,
+    "memTotalBytes": 8453963776,
+    "memAvailableBytes": 5965447168,
+    "swapTotalBytes": 2147467264,
+    "swapUsedBytes": 0,
+    "diskTotalBytes": 125417230336,
+    "diskUsedBytes": 26090266624,
+    "diskReadBytesPerSec": 0,
+    "diskWriteBytesPerSec": 11464.357,
+    "netRxBytesPerSec": 3813.422,
+    "netTxBytesPerSec": 1437.143
+   },
+   "agentOverhead": {
+    "mainThreadMsPerTick": 0.028,
+    "mainThreadMsMax": 0.572,
+    "asyncCpuMs": 4.999
+   }
+  },
+  {
+   "ts": "2026-11-09T12:13:17.709Z",
+   "windowSeconds": 10,
+   "tick": {
+    "tps1m": 20,
+    "tps5m": 20,
+    "tps15m": 20,
+    "msptAvg": 0.119,
+    "msptP95": 0.265,
+    "msptP99": 0.618,
+    "msptMax": 0.622,
+    "tickCount": 200,
+    "slowTicks": []
+   },
+   "jvm": {
+    "heapUsedBytes": 408325024,
+    "heapCommittedBytes": 1073741824,
+    "heapMaxBytes": 3221225472,
+    "gcPauses": [
+     {
+      "collector": "G1 Young Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Concurrent GC",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Old Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     }
+    ],
+    "threadCount": 32,
+    "processCpuLoad": 0
+   },
+   "world": [
+    {
+     "name": "world",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_nether",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_the_end",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    }
+   ],
+   "worstChunks": [],
+   "players": {
+    "count": 0,
+    "pings": []
+   },
+   "host": {
+    "cpuLoad1m": 0.25,
+    "cpuUsage": 0.0323,
+    "cpuTempC": 48,
+    "memTotalBytes": 8453963776,
+    "memAvailableBytes": 5968691200,
+    "swapTotalBytes": 2147467264,
+    "swapUsedBytes": 0,
+    "diskTotalBytes": 125417230336,
+    "diskUsedBytes": 26090270720,
+    "diskReadBytesPerSec": 0,
+    "diskWriteBytesPerSec": 31526.943,
+    "netRxBytesPerSec": 5736.07,
+    "netTxBytesPerSec": 2253.724
+   },
+   "agentOverhead": {
+    "mainThreadMsPerTick": 0.028,
+    "mainThreadMsMax": 0.524,
+    "asyncCpuMs": 4.848
+   }
+  },
+  {
+   "ts": "2026-11-09T12:13:27.713Z",
+   "windowSeconds": 10,
+   "tick": {
+    "tps1m": 20,
+    "tps5m": 20,
+    "tps15m": 20,
+    "msptAvg": 0.105,
+    "msptP95": 0.192,
+    "msptP99": 0.626,
+    "msptMax": 0.631,
+    "tickCount": 200,
+    "slowTicks": []
+   },
+   "jvm": {
+    "heapUsedBytes": 408325024,
+    "heapCommittedBytes": 1073741824,
+    "heapMaxBytes": 3221225472,
+    "gcPauses": [
+     {
+      "collector": "G1 Young Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Concurrent GC",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Old Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     }
+    ],
+    "threadCount": 32,
+    "processCpuLoad": 0
+   },
+   "world": [
+    {
+     "name": "world",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_nether",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    },
+    {
+     "name": "world_the_end",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.8
+    }
+   ],
+   "worstChunks": [],
+   "players": {
+    "count": 0,
+    "pings": []
+   },
+   "host": {
+    "cpuLoad1m": 0.29,
+    "cpuUsage": 0.0333,
+    "cpuTempC": 48,
+    "memTotalBytes": 8453963776,
+    "memAvailableBytes": 5968740352,
+    "swapTotalBytes": 2147467264,
+    "swapUsedBytes": 0,
+    "diskTotalBytes": 125417230336,
+    "diskUsedBytes": 26090270720,
+    "diskReadBytesPerSec": 0,
+    "diskWriteBytesPerSec": 4913.18,
+    "netRxBytesPerSec": 3709.675,
+    "netTxBytesPerSec": 1833.046
+   },
+   "agentOverhead": {
+    "mainThreadMsPerTick": 0.026,
+    "mainThreadMsMax": 0.536,
+    "asyncCpuMs": 5.418
+   }
+  },
+  {
+   "ts": "2026-11-09T12:13:37.717Z",
+   "windowSeconds": 10,
+   "tick": {
+    "tps1m": 20,
+    "tps5m": 20,
+    "tps15m": 20,
+    "msptAvg": 0.11,
+    "msptP95": 0.167,
+    "msptP99": 0.718,
+    "msptMax": 0.728,
+    "tickCount": 201,
+    "slowTicks": []
+   },
+   "jvm": {
+    "heapUsedBytes": 416713632,
+    "heapCommittedBytes": 1073741824,
+    "heapMaxBytes": 3221225472,
+    "gcPauses": [
+     {
+      "collector": "G1 Young Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Concurrent GC",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Old Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     }
+    ],
+    "threadCount": 32,
+    "processCpuLoad": 0
+   },
+   "world": [
+    {
+     "name": "world",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.9
+    },
+    {
+     "name": "world_nether",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.9
+    },
+    {
+     "name": "world_the_end",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.9
+    }
+   ],
+   "worstChunks": [],
+   "players": {
+    "count": 0,
+    "pings": []
+   },
+   "host": {
+    "cpuLoad1m": 0.24,
+    "cpuUsage": 0.0345,
+    "cpuTempC": 47.4,
+    "memTotalBytes": 8453963776,
+    "memAvailableBytes": 5967118336,
+    "swapTotalBytes": 2147467264,
+    "swapUsedBytes": 0,
+    "diskTotalBytes": 125417230336,
+    "diskUsedBytes": 26090274816,
+    "diskReadBytesPerSec": 0,
+    "diskWriteBytesPerSec": 6141.565,
+    "netRxBytesPerSec": 3843.176,
+    "netTxBytesPerSec": 1804.385
+   },
+   "agentOverhead": {
+    "mainThreadMsPerTick": 0.031,
+    "mainThreadMsMax": 0.635,
+    "asyncCpuMs": 5.315
+   }
+  },
+  {
+   "ts": "2026-11-09T12:13:47.720Z",
+   "windowSeconds": 10,
+   "tick": {
+    "tps1m": 20,
+    "tps5m": 20,
+    "tps15m": 20,
+    "msptAvg": 0.1,
+    "msptP95": 0.18,
+    "msptP99": 0.725,
+    "msptMax": 0.735,
+    "tickCount": 200,
+    "slowTicks": []
+   },
+   "jvm": {
+    "heapUsedBytes": 425102240,
+    "heapCommittedBytes": 1073741824,
+    "heapMaxBytes": 3221225472,
+    "gcPauses": [
+     {
+      "collector": "G1 Young Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Concurrent GC",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Old Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     }
+    ],
+    "threadCount": 32,
+    "processCpuLoad": 0
+   },
+   "world": [
+    {
+     "name": "world",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.9
+    },
+    {
+     "name": "world_nether",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.9
+    },
+    {
+     "name": "world_the_end",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.9
+    }
+   ],
+   "worstChunks": [],
+   "players": {
+    "count": 0,
+    "pings": []
+   },
+   "host": {
+    "cpuLoad1m": 0.21,
+    "cpuUsage": 0.0359,
+    "cpuTempC": 48.5,
+    "memTotalBytes": 8453963776,
+    "memAvailableBytes": 5967970304,
+    "swapTotalBytes": 2147467264,
+    "swapUsedBytes": 0,
+    "diskTotalBytes": 125417230336,
+    "diskUsedBytes": 26090270720,
+    "diskReadBytesPerSec": 0,
+    "diskWriteBytesPerSec": 63875.68,
+    "netRxBytesPerSec": 3166.313,
+    "netTxBytesPerSec": 1473.494
+   },
+   "agentOverhead": {
+    "mainThreadMsPerTick": 0.029,
+    "mainThreadMsMax": 0.638,
+    "asyncCpuMs": 4.336
+   }
+  },
+  {
+   "ts": "2026-11-09T12:13:57.723Z",
+   "windowSeconds": 10,
+   "tick": {
+    "tps1m": 20,
+    "tps5m": 20,
+    "tps15m": 20,
+    "msptAvg": 0.108,
+    "msptP95": 0.152,
+    "msptP99": 0.683,
+    "msptMax": 0.761,
+    "tickCount": 200,
+    "slowTicks": []
+   },
+   "jvm": {
+    "heapUsedBytes": 425102240,
+    "heapCommittedBytes": 1073741824,
+    "heapMaxBytes": 3221225472,
+    "gcPauses": [
+     {
+      "collector": "G1 Young Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Concurrent GC",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Old Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     }
+    ],
+    "threadCount": 32,
+    "processCpuLoad": 0.0476
+   },
+   "world": [
+    {
+     "name": "world",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.9
+    },
+    {
+     "name": "world_nether",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.9
+    },
+    {
+     "name": "world_the_end",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.9
+    }
+   ],
+   "worstChunks": [],
+   "players": {
+    "count": 0,
+    "pings": []
+   },
+   "host": {
+    "cpuLoad1m": 0.17,
+    "cpuUsage": 0.0288,
+    "cpuTempC": 47.4,
+    "memTotalBytes": 8453963776,
+    "memAvailableBytes": 5974753280,
+    "swapTotalBytes": 2147467264,
+    "swapUsedBytes": 0,
+    "diskTotalBytes": 125417230336,
+    "diskUsedBytes": 26090270720,
+    "diskReadBytesPerSec": 0,
+    "diskWriteBytesPerSec": 6551.697,
+    "netRxBytesPerSec": 3234.66,
+    "netTxBytesPerSec": 1675.313
+   },
+   "agentOverhead": {
+    "mainThreadMsPerTick": 0.031,
+    "mainThreadMsMax": 0.665,
+    "asyncCpuMs": 4.09
+   }
+  },
+  {
+   "ts": "2026-11-09T12:14:07.727Z",
+   "windowSeconds": 10,
+   "tick": {
+    "tps1m": 20,
+    "tps5m": 20,
+    "tps15m": 20,
+    "msptAvg": 0.114,
+    "msptP95": 0.175,
+    "msptP99": 0.744,
+    "msptMax": 0.942,
+    "tickCount": 200,
+    "slowTicks": []
+   },
+   "jvm": {
+    "heapUsedBytes": 433490848,
+    "heapCommittedBytes": 1073741824,
+    "heapMaxBytes": 3221225472,
+    "gcPauses": [
+     {
+      "collector": "G1 Young Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Concurrent GC",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     },
+     {
+      "collector": "G1 Old Generation",
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+     }
+    ],
+    "threadCount": 32,
+    "processCpuLoad": 0
+   },
+   "world": [
+    {
+     "name": "world",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.9
+    },
+    {
+     "name": "world_nether",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.9
+    },
+    {
+     "name": "world_the_end",
+     "loadedChunks": 0,
+     "entities": 0,
+     "entitiesByType": {},
+     "tileEntitiesByType": {},
+     "chunkGenPerMinute": 0,
+     "countsAgeSeconds": 6.9
+    }
+   ],
+   "worstChunks": [],
+   "players": {
+    "count": 0,
+    "pings": []
+   },
+   "host": {
+    "cpuLoad1m": 0.15,
+    "cpuUsage": 0.0338,
+    "cpuTempC": 47.4,
+    "memTotalBytes": 8453963776,
+    "memAvailableBytes": 5965938688,
+    "swapTotalBytes": 2147467264,
+    "swapUsedBytes": 0,
+    "diskTotalBytes": 125417230336,
+    "diskUsedBytes": 26090270720,
+    "diskReadBytesPerSec": 0,
+    "diskWriteBytesPerSec": 11055.19,
+    "netRxBytesPerSec": 3280.01,
+    "netTxBytesPerSec": 1555.136
+   },
+   "agentOverhead": {
+    "mainThreadMsPerTick": 0.032,
+    "mainThreadMsMax": 0.653,
+    "asyncCpuMs": 5.115
+   }
+  }
+ ]
+}

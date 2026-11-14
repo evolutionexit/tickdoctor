@@ -1,0 +1,91 @@
+# Dev stack: `docker compose up --build` → http://localhost:3000 (Caddy → web + api).
+# No Docker? See README "Setup B" (native Postgres + Mailpit, same ports/env).
+# For hot reload while coding, run only the infra (`docker compose up postgres mailpit`)
+# and start api/web on the host with `pnpm dev` (Next.js rewrites then forward /api to :4000).
+services:
+  caddy:
+    image: caddy:2.10-alpine
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes: ["./Caddyfile:/etc/caddy/Caddyfile:ro"]
+    depends_on: [web, api]
+    restart: unless-stopped
+
+  # Ingest-only listener for the Pi test server, which reaches this Mac over Tailscale
+  # (plugin api-url http://<Mac's MagicDNS name>:3001). INGEST_BIND_IP = the Mac's Tailscale IP
+  # (default: localhost only). If Tailscale isn't up at boot, only this container retries.
+  ingest:
+    image: caddy:2.10-alpine
+    ports:
+      - "${INGEST_BIND_IP:-127.0.0.1}:3001:3001"
+    volumes: ["./Caddyfile.ingest:/etc/caddy/Caddyfile:ro"]
+    depends_on: [api]
+    restart: unless-stopped
+
+  postgres:
+    restart: unless-stopped
+    image: postgres:17
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-tickdoctor}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-tickdoctor}
+      POSTGRES_DB: ${POSTGRES_DB:-tickdoctor}
+    ports: ["127.0.0.1:5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER}"]
+      interval: 5s
+      retries: 10
+
+  mailpit:
+    restart: unless-stopped
+    image: axllent/mailpit:v1.21
+    ports: ["127.0.0.1:8025:8025", "127.0.0.1:1025:1025"]
+
+  api:
+    restart: unless-stopped
+    build: { context: ., dockerfile: apps/api/Dockerfile }
+    environment:
+      DATABASE_URL: postgres://${POSTGRES_USER:-tickdoctor}:${POSTGRES_PASSWORD:-tickdoctor}@postgres:5432/${POSTGRES_DB:-tickdoctor}
+      API_PORT: "4000"
+      WEB_PUBLIC_URL: ${WEB_PUBLIC_URL:-http://localhost:3000}
+      TRUST_PROXY: "true" # only reachable through Caddy, which sets X-Forwarded-For
+      NODE_ENV: ${NODE_ENV:-development} # dev compose; prod compose sets production (dev-only ingest settings are refused there)
+      API_KEY_PEPPER: ${API_KEY_PEPPER:?set API_KEY_PEPPER in .env}
+      DEV_ADMIN_TOKEN: ${DEV_ADMIN_TOKEN:-}
+      INGEST_DEBUG: ${INGEST_DEBUG:-false}
+      FINDING_RECHECK_INCIDENT_HOURS: ${FINDING_RECHECK_INCIDENT_HOURS:-}
+      FINDING_RECHECK_SERVER_MINUTES: ${FINDING_RECHECK_SERVER_MINUTES:-}
+      COOKIE_SECURE: ${COOKIE_SECURE:-}
+      # Auth emails go to Mailpit inside compose (UI: http://localhost:8025), whatever .env says for host runs.
+      SMTP_HOST: mailpit
+      SMTP_PORT: "1025"
+      MAIL_FROM: ${MAIL_FROM:-}
+      AGENT_API_URL: ${AGENT_API_URL:-}
+      AGENT_JAR_DIR: /agent-jars
+      DISCORD_CLIENT_ID: ${DISCORD_CLIENT_ID:-}
+      DISCORD_CLIENT_SECRET: ${DISCORD_CLIENT_SECRET:-}
+      DISCORD_REDIRECT_URI: ${DISCORD_REDIRECT_URI:-}
+      SECRETS_KEY: ${SECRETS_KEY:-} # Phase 6 alert webhooks (openssl rand -base64 32)
+      BETA_ALL_PRO: ${BETA_ALL_PRO:-false} # Phase 8: every account gets Pro limits (stored plans unchanged)
+    volumes:
+      # Agent builds served by GET /downloads/agent/latest.jar (newest semver). Read-only.
+      - ./agent/build/libs:/agent-jars:ro
+    # No published port on purpose: everything goes through Caddy.
+    depends_on:
+      postgres: { condition: service_healthy }
+
+  web:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+      args: # Next.js bakes rewrites + metadataBase in at build time
+        API_INTERNAL_URL: http://api:4000
+        WEB_PUBLIC_URL: ${WEB_PUBLIC_URL:-http://localhost:3000}
+    environment:
+      API_INTERNAL_URL: http://api:4000
+      WEB_PUBLIC_URL: ${WEB_PUBLIC_URL:-http://localhost:3000}
+    depends_on: [api]
+
+volumes:
+  pgdata:

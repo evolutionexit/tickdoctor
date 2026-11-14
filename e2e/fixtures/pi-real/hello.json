@@ -1,0 +1,159 @@
+{
+ "ok": true,
+ "endpoint": "hello",
+ "count": 1,
+ "items": [
+  {
+   "receivedAt": "2026-11-09T12:04:58.567Z",
+   "keyId": "stub",
+   "body": {
+    "schemaVersion": 1,
+    "agentVersion": "0.1.1",
+    "sentAt": "2026-11-09T12:04:58.455Z",
+    "bootId": "13e587c0-4f0e-4210-bce5-3e91b877aa83",
+    "payload": {
+     "server": {
+      "software": "Paper",
+      "softwareVersion": "26.2-83-f9fb80b",
+      "minecraftVersion": "26.2",
+      "onlineMode": true,
+      "maxPlayers": 8
+     },
+     "jvm": {
+      "javaVersion": "25.0.5 (OpenJDK 64-Bit Server VM)",
+      "vendor": "Debian",
+      "flags": [
+       "-Xms1G",
+       "-Xmx3G",
+       "-XX:+UseG1GC",
+       "-XX:+ParallelRefProcEnabled",
+       "-XX:MaxGCPauseMillis=200",
+       "-XX:+UnlockExperimentalVMOptions",
+       "-XX:+DisableExplicitGC",
+       "-XX:+AlwaysPreTouch",
+       "-XX:G1NewSizePercent=30",
+       "-XX:G1MaxNewSizePercent=40",
+       "-XX:G1HeapRegionSize=8M",
+       "-XX:G1ReservePercent=20",
+       "-XX:G1HeapWastePercent=5",
+       "-XX:G1MixedGCCountTarget=4",
+       "-XX:InitiatingHeapOccupancyPercent=15",
+       "-XX:G1MixedGCLiveThresholdPercent=90",
+       "-XX:G1RSetUpdatingPauseTimePercent=5",
+       "-XX:SurvivorRatio=32",
+       "-XX:MaxTenuringThreshold=1",
+       "-Dusing.aikars.flags=https://mcflags.emc.gs",
+       "-Daikars.new.flags=true"
+      ],
+      "heapMaxBytes": 3221225472,
+      "heapInitBytes": 1073741824,
+      "availableProcessors": 4
+     },
+     "host": {
+      "os": "Linux 6.18.50+rpt-rpi-2712",
+      "arch": "aarch64",
+      "model": "Raspberry Pi 5 Model B Rev 1.0",
+      "totalMemoryBytes": 8453963776
+     },
+     "config": {
+      "viewDistance": 8,
+      "simulationDistance": 6,
+      "entityActivationRange": {
+       "animals": 32,
+       "monsters": 32,
+       "raiders": 64,
+       "misc": 16,
+       "water": 16,
+       "villagers": 32,
+       "flying-monsters": 32,
+       "villagers-work-immunity-after": 100,
+       "villagers-work-immunity-for": 20
+      },
+      "paperWorldDefaults": {
+       "chunks.auto-save-interval": "default",
+       "chunks.delay-chunk-unloads-by": "10s",
+       "chunks.max-auto-save-chunks-per-tick": 24,
+       "chunks.prevent-moving-into-unloaded-chunks": false,
+       "chunks.entity-per-chunk-save-limit.arrow": -1,
+       "chunks.entity-per-chunk-save-limit.ender_pearl": -1,
+       "chunks.entity-per-chunk-save-limit.experience_orb": -1,
+       "chunks.entity-per-chunk-save-limit.fireball": -1,
+       "chunks.entity-per-chunk-save-limit.small_fireball": -1,
+       "chunks.entity-per-chunk-save-limit.snowball": -1,
+       "collisions.max-entity-collisions": 8,
+       "collisions.fix-climbing-bypassing-cramming-rule": false,
+       "entities.armor-stands.tick": true,
+       "entities.armor-stands.do-collision-entity-lookups": true,
+       "entities.spawning.per-player-mob-spawns": true,
+       "entities.spawning.spawn-limits.ambient": -1,
+       "entities.spawning.spawn-limits.axolotls": -1,
+       "entities.spawning.spawn-limits.creature": -1,
+       "entities.spawning.spawn-limits.monster": -1,
+       "entities.spawning.spawn-limits.underground_water_creature": -1,
+       "entities.spawning.spawn-limits.water_ambient": -1,
+       "entities.spawning.spawn-limits.water_creature": -1,
+       "entities.spawning.ticks-per-spawn.ambient": -1,
+       "entities.spawning.ticks-per-spawn.axolotls": -1,
+       "entities.spawning.ticks-per-spawn.creature": -1,
+       "entities.spawning.ticks-per-spawn.monster": -1,
+       "entities.spawning.ticks-per-spawn.underground_water_creature": -1,
+       "entities.spawning.ticks-per-spawn.water_ambient": -1,
+       "entities.spawning.ticks-per-spawn.water_creature": -1,
+       "entities.spawning.despawn-ranges.ambient.hard": "default",
+       "entities.spawning.despawn-ranges.ambient.soft": "default",
+       "entities.spawning.despawn-ranges.axolotls.hard": "default",
+       "entities.spawning.despawn-ranges.axolotls.soft": "default",
+       "entities.spawning.despawn-ranges.creature.hard": "default",
+       "entities.spawning.despawn-ranges.creature.soft": "default",
+       "entities.spawning.despawn-ranges.misc.hard": "default",
+       "entities.spawning.despawn-ranges.misc.soft": "default",
+       "entities.spawning.despawn-ranges.monster.hard": "default",
+       "entities.spawning.despawn-ranges.monster.soft": "default",
+       "entities.spawning.despawn-ranges.underground_water_creature.hard": "default",
+       "entities.spawning.despawn-ranges.underground_water_creature.soft": "default",
+       "entities.spawning.despawn-ranges.water_ambient.hard": "default",
+       "entities.spawning.despawn-ranges.water_ambient.soft": "default",
+       "entities.spawning.despawn-ranges.water_creature.hard": "default",
+       "entities.spawning.despawn-ranges.water_creature.soft": "default",
+       "entities.spawning.alt-item-despawn-rate.enabled": false,
+       "entities.behavior.disable-chest-cat-detection": false,
+       "environment.optimize-explosions": false,
+       "environment.treasure-maps.enabled": true,
+       "hopper.cooldown-when-full": true,
+       "hopper.disable-move-event": false,
+       "hopper.ignore-occluding-blocks": false,
+       "misc.redstone-implementation": "VANILLA",
+       "tick-rates.container-update": 1,
+       "tick-rates.grass-spread": 1,
+       "tick-rates.mob-spawner": 1,
+       "tick-rates.dry-farmland": 1,
+       "tick-rates.wet-farmland": 1
+      }
+     },
+     "worlds": [
+      {
+       "name": "world",
+       "environment": "NORMAL"
+      },
+      {
+       "name": "world_nether",
+       "environment": "NETHER"
+      },
+      {
+       "name": "world_the_end",
+       "environment": "THE_END"
+      }
+     ],
+     "plugins": [
+      {
+       "name": "TickDoctor",
+       "version": "0.1.1",
+       "enabled": true
+      }
+     ],
+     "privacyMode": "hashed"
+    }
+   }
+  }
+ ]
+}

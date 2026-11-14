@@ -1,0 +1,7 @@
+{
+  "name": "@tickdoctor/bots",
+  "private": true,
+  "type": "module",
+  "scripts": { "dry": "node run.mjs ramp --dry-run" },
+  "dependencies": { "mineflayer": "4.39.0" }
+}

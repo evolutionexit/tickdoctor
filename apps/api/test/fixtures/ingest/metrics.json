@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "agentVersion": "0.1.0",
+  "sentAt": "2026-11-09T14:00:20.050Z",
+  "bootId": "6f1c2a9e-3b4d-4e5f-8a7b-9c0d1e2f3a4b",
+  "payload": {
+    "samples": [
+      {
+        "ts": "2026-11-09T14:00:10.000Z",
+        "windowSeconds": 10,
+        "tick": {
+          "tps1m": 19.98, "tps5m": 19.95, "tps15m": 19.97,
+          "msptAvg": 18.4, "msptP95": 31.2, "msptP99": 44.9, "msptMax": 61.3,
+          "tickCount": 200,
+          "slowTicks": [{ "ts": "2026-11-09T14:00:06.350Z", "durationMs": 61.3 }]
+        },
+        "jvm": {
+          "heapUsedBytes": 1288490188, "heapCommittedBytes": 2147483648, "heapMaxBytes": 3221225472,
+          "gcPauses": [{ "collector": "G1 Young Generation", "count": 2, "totalMs": 18.5, "maxMs": 11.2 }],
+          "threadCount": 48, "processCpuLoad": 0.31
+        },
+        "world": [
+          {
+            "name": "world", "loadedChunks": 1156, "entities": 412,
+            "entitiesByType": { "minecraft:item": 96, "minecraft:cow": 54, "minecraft:zombie": 31, "minecraft:villager": 22, "other": 209 },
+            "tileEntitiesByType": { "minecraft:hopper": 140, "minecraft:chest": 88, "minecraft:furnace": 17 },
+            "chunkGenPerMinute": 3, "countsAgeSeconds": 4.5
+          },
+          {
+            "name": "world_nether", "loadedChunks": 121, "entities": 37,
+            "entitiesByType": { "minecraft:zombified_piglin": 25, "other": 12 },
+            "tileEntitiesByType": {}, "countsAgeSeconds": 6
+          }
+        ],
+        "worstChunks": [
+          { "world": "world", "x": 12, "z": -7, "entities": 96, "tileEntities": 64, "topEntityType": "minecraft:item" },
+          { "world": "world", "x": 13, "z": -7, "entities": 22, "tileEntities": 40, "topEntityType": "minecraft:villager" }
+        ],
+        "players": {
+          "count": 2,
+          "pings": [
+            { "id": "3b9a0c1f5e8d7a6b4c2e1f0a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c", "pingMs": 38 },
+            { "id": "a1b2c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4e5f60718293a4b5c6d7e8f90", "pingMs": 112 }
+          ]
+        },
+        "host": {
+          "cpuLoad1m": 1.42, "cpuUsage": 0.29, "cpuTempC": 61.8,
+          "throttled": { "now": false, "sinceBoot": false, "raw": "0x0" },
+          "memTotalBytes": 8443961344, "memAvailableBytes": 4831838208,
+          "swapTotalBytes": 2147479552, "swapUsedBytes": 0,
+          "diskTotalBytes": 125029015552, "diskUsedBytes": 30484504576,
+          "diskReadBytesPerSec": 0, "diskWriteBytesPerSec": 182272,
+          "netRxBytesPerSec": 9420, "netTxBytesPerSec": 31877
+        },
+        "agentOverhead": { "mainThreadMsPerTick": 0.041, "mainThreadMsMax": 0.38, "asyncCpuMs": 12.4 }
+      },
+      {
+        "ts": "2026-11-09T14:00:20.000Z",
+        "windowSeconds": 10,
+        "tick": {
+          "tps1m": 19.97, "tps5m": 19.95, "tps15m": 19.97,
+          "msptAvg": 21.7, "msptP95": 38.6, "msptP99": 52.0, "msptMax": 74.9,
+          "tickCount": 200,
+          "slowTicks": [
+            { "ts": "2026-11-09T14:00:14.900Z", "durationMs": 52.0 },
+            { "ts": "2026-11-09T14:00:18.150Z", "durationMs": 74.9 }
+          ]
+        },
+        "jvm": {
+          "heapUsedBytes": 1503238553, "heapCommittedBytes": 2147483648, "heapMaxBytes": 3221225472,
+          "gcPauses": [{ "collector": "G1 Young Generation", "count": 1, "totalMs": 9.7, "maxMs": 9.7 }],
+          "threadCount": 48, "processCpuLoad": 0.36
+        },
+        "world": [
+          {
+            "name": "world", "loadedChunks": 1172, "entities": 431,
+            "entitiesByType": { "minecraft:item": 110, "minecraft:cow": 54, "minecraft:zombie": 33, "minecraft:villager": 22, "other": 212 },
+            "tileEntitiesByType": { "minecraft:hopper": 140, "minecraft:chest": 88, "minecraft:furnace": 17 },
+            "chunkGenPerMinute": 5, "countsAgeSeconds": 3
+          }
+        ],
+        "worstChunks": [
+          { "world": "world", "x": 12, "z": -7, "entities": 110, "tileEntities": 64, "topEntityType": "minecraft:item" }
+        ],
+        "players": {
+          "count": 2,
+          "pings": [
+            { "id": "3b9a0c1f5e8d7a6b4c2e1f0a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c", "pingMs": 41 },
+            { "id": "a1b2c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4e5f60718293a4b5c6d7e8f90", "pingMs": 104 }
+          ]
+        },
+        "host": {
+          "cpuLoad1m": 1.55, "cpuUsage": 0.33, "cpuTempC": 62.4,
+          "throttled": { "now": false, "sinceBoot": false, "raw": "0x0" },
+          "memTotalBytes": 8443961344, "memAvailableBytes": 4789123072,
+          "swapTotalBytes": 2147479552, "swapUsedBytes": 0,
+          "diskTotalBytes": 125029015552, "diskUsedBytes": 30484680704
+        },
+        "agentOverhead": { "mainThreadMsPerTick": 0.043, "mainThreadMsMax": 0.41, "asyncCpuMs": 11.9 }
+      }
+    ]
+  }
+}

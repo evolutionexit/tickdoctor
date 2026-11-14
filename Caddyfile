@@ -1,0 +1,58 @@
+# Single entry point in front of web + api (dev compose; prod adds a real domain + TLS).
+# Why: Caddy replaces any client-supplied X-Forwarded-For with the real peer address
+# (no trusted_proxies configured), so the API's TRUST_PROXY=true reads a trustworthy IP.
+# It also keeps the API off the Next.js path for /api and /v1.
+{
+	admin off
+	# Logging (GDPR): ERROR level only, and the IP, port, headers and query string are stripped from whatever is logged
+	# (aborted SSE/RSC streams used to log warn lines with remote_ip, URI incl. tokens, User-Agent and Referer).
+	log {
+		output stderr
+		level ERROR
+		format filter {
+			wrap json
+			fields {
+				request>remote_ip delete
+				request>remote_port delete
+				request>client_ip delete
+				request>headers delete
+				request>uri regexp \?.* ""
+				# Error strings from reverse_proxy can embed client addresses (write tcp a->CLIENT:port: broken pipe)
+				error regexp `\[[0-9a-fA-F:.]+\](:[0-9]+)?|(?:[0-9a-fA-F]{0,4}:){2,7}[0-9a-fA-F]{0,4}|[0-9]{1,3}(?:\.[0-9]{1,3}){3}(:[0-9]+)?` "[redacted]"
+				msg regexp `\[[0-9a-fA-F:.]+\](:[0-9]+)?|(?:[0-9a-fA-F]{0,4}:){2,7}[0-9a-fA-F]{0,4}|[0-9]{1,3}(?:\.[0-9]{1,3}){3}(:[0-9]+)?` "[redacted]"
+			}
+		}
+	}
+}
+
+:3000 {
+	@api path /api/* /v1/* /badge/* /downloads/* /health
+	handle @api {
+		reverse_proxy api:4000
+	}
+	handle {
+		reverse_proxy web:3000
+	}
+
+	# Badges (/badge/*) keep the API's own strict headers (CSP default-src 'none'); the site headers below skip them.
+	@site not path /badge/*
+	header @site {
+		X-Content-Type-Options nosniff
+		Referrer-Policy strict-origin-when-cross-origin
+		X-Frame-Options DENY
+		Permissions-Policy "camera=(), microphone=(), geolocation=()"
+		Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+		Cross-Origin-Opener-Policy same-origin
+		X-Permitted-Cross-Domain-Policies none
+		-Server
+	}
+
+	# Cross-Origin-Resource-Policy: same-origin for the app and site (pentest F-06/F-01); badges, OG images and
+	# downloads must stay embeddable cross-origin, so they say so explicitly. No COEP on purpose.
+	@embed path /badge/* /s/*/opengraph-image* /og /og/* /downloads/* /api/public/*
+	header @embed Cross-Origin-Resource-Policy cross-origin
+	@appres not path /badge/* /s/*/opengraph-image* /og /og/* /downloads/* /api/public/*
+	header @appres Cross-Origin-Resource-Policy same-origin
+
+	# No access log: we don't want IP addresses on disk (GDPR).
+}

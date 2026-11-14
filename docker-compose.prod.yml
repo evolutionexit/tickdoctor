@@ -1,0 +1,121 @@
+# Production stack for ONE small server (see docs/hosting.md). NOT deployed — only with Michel's go-ahead.
+#
+#   cp .env.prod.example .env.prod   # fill every value; keep it out of git (mode 600)
+#   docker compose -f docker-compose.prod.yml --env-file .env.prod up -d --build
+#
+# Differences from the dev compose: real domain + automatic TLS (Caddyfile.prod), no Mailpit (real SMTP provider),
+# no dev admin token, no published Postgres/API ports, COOKIE_SECURE=true, NODE_ENV=production, agent jars from a
+# read-only folder you copy releases into, restart policies and log rotation everywhere.
+
+x-logging: &logging
+  driver: json-file
+  options: { max-size: "10m", max-file: "3" }
+
+services:
+  caddy:
+    image: caddy:2.10-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp" # HTTP/3
+    environment:
+      DOMAIN: ${DOMAIN:?set DOMAIN}
+      ACME_EMAIL: ${ACME_EMAIL:?set ACME_EMAIL}
+    volumes:
+      - ./Caddyfile.prod:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on: [web, api]
+    logging: *logging
+
+  postgres:
+    image: postgres:17
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?set POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:-tickdoctor}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    shm_size: 256mb
+    logging: *logging
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-tickdoctor}
+      API_PORT: 4000
+      API_HOST: 0.0.0.0
+      WEB_PUBLIC_URL: https://${DOMAIN}
+      AGENT_API_URL: https://${DOMAIN}
+      TRUST_PROXY: "true"
+      COOKIE_SECURE: "true"
+      API_KEY_PEPPER: ${API_KEY_PEPPER:?set API_KEY_PEPPER}
+      SECRETS_KEY: ${SECRETS_KEY:?set SECRETS_KEY}
+      SMTP_HOST: ${SMTP_HOST:?set SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      SMTP_SECURE: ${SMTP_SECURE:-false}
+      MAIL_FROM: ${MAIL_FROM:?set MAIL_FROM}
+      DISCORD_CLIENT_ID: ${DISCORD_CLIENT_ID:-}
+      DISCORD_CLIENT_SECRET: ${DISCORD_CLIENT_SECRET:-}
+      DISCORD_REDIRECT_URI: ${DISCORD_CLIENT_ID:+https://${DOMAIN}/api/auth/discord/callback}
+      BETA_ALL_PRO: ${BETA_ALL_PRO:-true}
+      AGENT_JAR_DIR: /agent-jars
+      WAITLIST_GLOBAL_CAP_PER_HOUR: ${WAITLIST_GLOBAL_CAP_PER_HOUR:-200}
+    volumes:
+      - ./agent-jars:/agent-jars:ro # copy tickdoctor-agent-<version>.jar releases here
+    depends_on:
+      postgres: { condition: service_healthy }
+    logging: *logging
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+      args:
+        WEB_PUBLIC_URL: https://${DOMAIN}
+        API_INTERNAL_URL: http://api:4000
+    restart: unless-stopped
+    environment:
+      WEB_PUBLIC_URL: https://${DOMAIN}
+      API_INTERNAL_URL: http://api:4000
+    depends_on: [api]
+    logging: *logging
+
+  # Nightly pg_dump | gzip | age (authenticated encryption, ChaCha20-Poly1305) to the PUBLIC key BACKUP_AGE_RECIPIENT:
+  # the server cannot decrypt its own backups; the private identity stays offline with the owner (docs/hosting.md).
+  # Mode 600 files in ./backups, kept about 14 days; copy ./backups off the machine too. Logic: backup/backup.sh
+  # (pipefail, plaintext never on disk, stream verified before the file is moved into place, cleanup only on success).
+  # Restore: age -d -i identity.txt FILE.sql.gz.age | gunzip | psql ...   (full steps in docs/hosting.md)
+  # Deleted accounts stay in backups until the 14 days pass (say so in the privacy policy).
+  backup:
+    build: ./backup
+    restart: unless-stopped
+    environment:
+      PGHOST: postgres
+      PGUSER: ${POSTGRES_USER}
+      PGDATABASE: ${POSTGRES_DB:-tickdoctor}
+      PGPASSWORD: ${POSTGRES_PASSWORD}
+      BACKUP_AGE_RECIPIENT: ${BACKUP_AGE_RECIPIENT:?set BACKUP_AGE_RECIPIENT in .env.prod (age public key, see .env.prod.example)}
+    volumes:
+      - ./backups:/backups
+    depends_on:
+      postgres: { condition: service_healthy }
+    logging: *logging
+
+volumes:
+  pgdata:
+  caddy_data:
+  caddy_config:

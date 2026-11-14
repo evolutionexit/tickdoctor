@@ -1,0 +1,15 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+
+# pnpm 10+ blocks dependency install scripts unless allowed here.
+allowBuilds:
+  esbuild: true
+  sharp: true
+
+# next 15 pins postcss 8.4.31 (advisories: sourceMappingURL file read etc., build-time only); force the patched 8.5 line.
+minimumReleaseAgeExclude:
+  - postcss@8.5.33
+
+overrides:
+  "next>postcss": "8.5.33"

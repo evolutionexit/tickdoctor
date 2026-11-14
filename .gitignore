@@ -1,0 +1,33 @@
+# deps / builds
+node_modules/
+.pnpm-store/
+dist/
+build/
+.next/
+out/
+coverage/
+*.tsbuildinfo
+# java / gradle
+.gradle/
+agent/build/
+*.class
+# playwright
+e2e/test-results/
+e2e/playwright-report/
+# env & secrets
+.env
+.env.*
+!.env.example
+!.env.prod.example
+# prod runtime folders (docker-compose.prod.yml)
+backups/
+agent-jars/
+*.pem
+*.key
+secrets/
+# misc
+.DS_Store
+*.log
+
+# personal infra details
+.env.local

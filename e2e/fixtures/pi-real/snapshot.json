@@ -1,0 +1,149 @@
+{
+ "ok": true,
+ "endpoint": "snapshot",
+ "count": 1,
+ "items": [
+  {
+   "receivedAt": "2026-11-09T12:05:31.254Z",
+   "keyId": "stub",
+   "body": {
+    "schemaVersion": 1,
+    "agentVersion": "0.1.1",
+    "sentAt": "2026-11-09T12:05:31.240Z",
+    "bootId": "13e587c0-4f0e-4210-bce5-3e91b877aa83",
+    "payload": {
+     "trigger": "requested",
+     "ts": "2026-11-09T12:05:00.716Z",
+     "msptP95AtTrigger": 4.554,
+     "sample": {
+      "ts": "2026-11-09T12:05:00.716Z",
+      "windowSeconds": 10,
+      "tick": {
+       "tps1m": 20.086,
+       "tps5m": 20.086,
+       "tps15m": 20.086,
+       "msptAvg": 2.304,
+       "msptP95": 4.554,
+       "msptP99": 65.472,
+       "msptMax": 65.472,
+       "tickCount": 55,
+       "slowTicks": [
+        {
+         "ts": "2026-11-09T12:04:58.104Z",
+         "durationMs": 65.472
+        }
+       ]
+      },
+      "jvm": {
+       "heapUsedBytes": 481036256,
+       "heapCommittedBytes": 1073741824,
+       "heapMaxBytes": 3221225472,
+       "gcPauses": [
+        {
+         "collector": "G1 Young Generation",
+         "count": 0,
+         "totalMs": 0,
+         "maxMs": 0
+        },
+        {
+         "collector": "G1 Concurrent GC",
+         "count": 0,
+         "totalMs": 0,
+         "maxMs": 0
+        },
+        {
+         "collector": "G1 Old Generation",
+         "count": 0,
+         "totalMs": 0,
+         "maxMs": 0
+        }
+       ],
+       "threadCount": 42,
+       "processCpuLoad": 0.45
+      },
+      "world": [
+       {
+        "name": "world",
+        "loadedChunks": 0,
+        "entities": 0,
+        "entitiesByType": {},
+        "tileEntitiesByType": {},
+        "chunkGenPerMinute": 0,
+        "countsAgeSeconds": 0
+       },
+       {
+        "name": "world_nether",
+        "loadedChunks": 0,
+        "entities": 0,
+        "entitiesByType": {},
+        "tileEntitiesByType": {},
+        "chunkGenPerMinute": 0,
+        "countsAgeSeconds": 0
+       },
+       {
+        "name": "world_the_end",
+        "loadedChunks": 0,
+        "entities": 0,
+        "entitiesByType": {},
+        "tileEntitiesByType": {},
+        "chunkGenPerMinute": 0,
+        "countsAgeSeconds": 0
+       }
+      ],
+      "worstChunks": [],
+      "players": {
+       "count": 0,
+       "pings": []
+      },
+      "agentOverhead": {
+       "mainThreadMsPerTick": 0.493,
+       "mainThreadMsMax": 13.829,
+       "asyncCpuMs": 128.74
+      }
+     },
+     "worldsDetail": [
+      {
+       "name": "world",
+       "entitiesByType": {},
+       "tileEntitiesByType": {},
+       "topChunks": []
+      },
+      {
+       "name": "world_nether",
+       "entitiesByType": {},
+       "tileEntitiesByType": {},
+       "topChunks": []
+      },
+      {
+       "name": "world_the_end",
+       "entitiesByType": {},
+       "tileEntitiesByType": {},
+       "topChunks": []
+      }
+     ],
+     "threads": [],
+     "recentEvents": [
+      {
+       "type": "server_start",
+       "ts": "2026-11-09T12:04:57.301Z",
+       "uncleanPreviousShutdown": false
+      },
+      {
+       "type": "plugins_changed",
+       "ts": "2026-11-09T12:04:58.033Z",
+       "added": [],
+       "removed": [],
+       "updated": [
+        {
+         "name": "TickDoctor",
+         "from": "0.1.0",
+         "to": "0.1.1"
+        }
+       ]
+      }
+     ]
+    }
+   }
+  }
+ ]
+}

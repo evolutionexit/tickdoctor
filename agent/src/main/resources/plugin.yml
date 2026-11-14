@@ -1,0 +1,16 @@
+name: TickDoctor
+version: '${version}'
+main: dev.tickdoctor.agent.TickDoctorPlugin
+api-version: '26.2'
+description: Explains why your server lags. Sends tick, entity, chunk and host metrics to TickDoctor.
+load: POSTWORLD
+commands:
+  tickdoctor:
+    description: TickDoctor agent status, manual snapshot, reload.
+    usage: /<command> <status|snapshot|reload>
+    aliases: [td]
+    permission: tickdoctor.admin
+permissions:
+  tickdoctor.admin:
+    description: Use /tickdoctor.
+    default: op

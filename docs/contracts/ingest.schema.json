@@ -1,0 +1,2078 @@
+{
+  "$comment": "Generated from packages/shared/src/contracts/ingest.ts — do not edit. schemaVersion 1",
+  "schemas": {
+    "helloRequest": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "type": "number",
+          "const": 1
+        },
+        "agentVersion": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "sentAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "bootId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "server": {
+              "type": "object",
+              "properties": {
+                "software": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "softwareVersion": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "minecraftVersion": {
+                  "type": "string",
+                  "maxLength": 40
+                },
+                "onlineMode": {
+                  "type": "boolean"
+                },
+                "maxPlayers": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 2147483647
+                }
+              },
+              "required": [
+                "software",
+                "softwareVersion",
+                "minecraftVersion",
+                "onlineMode",
+                "maxPlayers"
+              ],
+              "additionalProperties": false
+            },
+            "jvm": {
+              "type": "object",
+              "properties": {
+                "javaVersion": {
+                  "type": "string",
+                  "maxLength": 80
+                },
+                "vendor": {
+                  "type": "string",
+                  "maxLength": 200
+                },
+                "flags": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 1000
+                  },
+                  "maxItems": 200
+                },
+                "heapMaxBytes": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "heapInitBytes": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "availableProcessors": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 2147483647
+                }
+              },
+              "required": [
+                "javaVersion",
+                "vendor",
+                "flags",
+                "heapMaxBytes",
+                "heapInitBytes",
+                "availableProcessors"
+              ],
+              "additionalProperties": false
+            },
+            "host": {
+              "type": "object",
+              "properties": {
+                "os": {
+                  "type": "string",
+                  "maxLength": 100
+                },
+                "arch": {
+                  "type": "string",
+                  "maxLength": 50
+                },
+                "model": {
+                  "type": "string",
+                  "maxLength": 200
+                },
+                "totalMemoryBytes": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                }
+              },
+              "required": [
+                "os",
+                "arch"
+              ],
+              "additionalProperties": false
+            },
+            "config": {
+              "type": "object",
+              "properties": {
+                "viewDistance": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 2147483647
+                },
+                "simulationDistance": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 2147483647
+                },
+                "entityActivationRange": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "integer",
+                    "minimum": -2147483648,
+                    "maximum": 2147483647
+                  }
+                },
+                "paperWorldDefaults": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      {
+                        "type": "number",
+                        "minimum": -1000000000000000,
+                        "maximum": 1000000000000000
+                      },
+                      {
+                        "type": "boolean"
+                      }
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "viewDistance",
+                "simulationDistance"
+              ],
+              "additionalProperties": false
+            },
+            "worlds": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "environment": {
+                    "type": "string",
+                    "enum": [
+                      "NORMAL",
+                      "NETHER",
+                      "THE_END",
+                      "CUSTOM"
+                    ]
+                  }
+                },
+                "required": [
+                  "name",
+                  "environment"
+                ],
+                "additionalProperties": false
+              },
+              "maxItems": 100
+            },
+            "plugins": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "version": {
+                    "type": "string",
+                    "maxLength": 100
+                  },
+                  "enabled": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "name",
+                  "version",
+                  "enabled"
+                ],
+                "additionalProperties": false
+              },
+              "maxItems": 500
+            },
+            "privacyMode": {
+              "type": "string",
+              "enum": [
+                "hashed",
+                "none"
+              ]
+            }
+          },
+          "required": [
+            "server",
+            "jvm",
+            "host",
+            "config",
+            "worlds",
+            "plugins",
+            "privacyMode"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "agentVersion",
+        "sentAt",
+        "bootId",
+        "payload"
+      ],
+      "additionalProperties": false,
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "metricsRequest": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "type": "number",
+          "const": 1
+        },
+        "agentVersion": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "sentAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "bootId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "samples": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "ts": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "windowSeconds": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 300
+                  },
+                  "tick": {
+                    "type": "object",
+                    "properties": {
+                      "tps1m": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1000000000000000
+                      },
+                      "tps5m": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1000000000000000
+                      },
+                      "tps15m": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1000000000000000
+                      },
+                      "msptAvg": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1000000000000000
+                      },
+                      "msptP95": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1000000000000000
+                      },
+                      "msptP99": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1000000000000000
+                      },
+                      "msptMax": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1000000000000000
+                      },
+                      "tickCount": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 2147483647
+                      },
+                      "slowTicks": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "ts": {
+                              "type": "string",
+                              "format": "date-time"
+                            },
+                            "durationMs": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1000000000000000
+                            }
+                          },
+                          "required": [
+                            "ts",
+                            "durationMs"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "maxItems": 100
+                      }
+                    },
+                    "required": [
+                      "tps1m",
+                      "tps5m",
+                      "tps15m",
+                      "msptAvg",
+                      "msptP95",
+                      "msptP99",
+                      "msptMax",
+                      "tickCount",
+                      "slowTicks"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "jvm": {
+                    "type": "object",
+                    "properties": {
+                      "heapUsedBytes": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 9007199254740991
+                      },
+                      "heapCommittedBytes": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 9007199254740991
+                      },
+                      "heapMaxBytes": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 9007199254740991
+                      },
+                      "gcPauses": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "collector": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 200
+                            },
+                            "count": {
+                              "type": "integer",
+                              "minimum": 0,
+                              "maximum": 2147483647
+                            },
+                            "totalMs": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1000000000000000
+                            },
+                            "maxMs": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1000000000000000
+                            }
+                          },
+                          "required": [
+                            "collector",
+                            "count",
+                            "totalMs",
+                            "maxMs"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "maxItems": 10
+                      },
+                      "threadCount": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 2147483647
+                      },
+                      "processCpuLoad": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                      }
+                    },
+                    "required": [
+                      "heapUsedBytes",
+                      "heapCommittedBytes",
+                      "heapMaxBytes",
+                      "gcPauses",
+                      "threadCount",
+                      "processCpuLoad"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "world": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 200
+                        },
+                        "loadedChunks": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 2147483647
+                        },
+                        "entities": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 2147483647
+                        },
+                        "entitiesByType": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 2147483647
+                          }
+                        },
+                        "tileEntitiesByType": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 2147483647
+                          }
+                        },
+                        "chunkGenPerMinute": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1000000000000000
+                        },
+                        "countsAgeSeconds": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1000000000000000
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "loadedChunks",
+                        "entities",
+                        "entitiesByType",
+                        "tileEntitiesByType",
+                        "countsAgeSeconds"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 100
+                  },
+                  "worstChunks": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "world": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 200
+                        },
+                        "x": {
+                          "type": "integer",
+                          "minimum": -2147483648,
+                          "maximum": 2147483647
+                        },
+                        "z": {
+                          "type": "integer",
+                          "minimum": -2147483648,
+                          "maximum": 2147483647
+                        },
+                        "entities": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 2147483647
+                        },
+                        "tileEntities": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 2147483647
+                        },
+                        "topEntityType": {
+                          "type": "string",
+                          "maxLength": 100
+                        }
+                      },
+                      "required": [
+                        "world",
+                        "x",
+                        "z",
+                        "entities",
+                        "tileEntities"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 10
+                  },
+                  "players": {
+                    "type": "object",
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 2147483647
+                      },
+                      "pings": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "minLength": 64,
+                              "maxLength": 64
+                            },
+                            "pingMs": {
+                              "type": "integer",
+                              "minimum": 0,
+                              "maximum": 2147483647
+                            }
+                          },
+                          "required": [
+                            "pingMs"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "maxItems": 1000
+                      }
+                    },
+                    "required": [
+                      "count"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "host": {
+                    "type": "object",
+                    "properties": {
+                      "cpuLoad1m": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1000000000000000
+                      },
+                      "cpuUsage": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                      },
+                      "cpuTempC": {
+                        "type": "number",
+                        "minimum": -50,
+                        "maximum": 150
+                      },
+                      "throttled": {
+                        "type": "object",
+                        "properties": {
+                          "now": {
+                            "type": "boolean"
+                          },
+                          "sinceBoot": {
+                            "type": "boolean"
+                          },
+                          "raw": {
+                            "type": "string",
+                            "maxLength": 20
+                          }
+                        },
+                        "required": [
+                          "now",
+                          "sinceBoot"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "memTotalBytes": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 9007199254740991
+                      },
+                      "memAvailableBytes": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 9007199254740991
+                      },
+                      "swapTotalBytes": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 9007199254740991
+                      },
+                      "swapUsedBytes": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 9007199254740991
+                      },
+                      "diskTotalBytes": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 9007199254740991
+                      },
+                      "diskUsedBytes": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 9007199254740991
+                      },
+                      "diskReadBytesPerSec": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1000000000000000
+                      },
+                      "diskWriteBytesPerSec": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1000000000000000
+                      },
+                      "netRxBytesPerSec": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1000000000000000
+                      },
+                      "netTxBytesPerSec": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1000000000000000
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "agentOverhead": {
+                    "type": "object",
+                    "properties": {
+                      "mainThreadMsPerTick": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1000000000000000
+                      },
+                      "mainThreadMsMax": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1000000000000000
+                      },
+                      "asyncCpuMs": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1000000000000000
+                      }
+                    },
+                    "required": [
+                      "mainThreadMsPerTick",
+                      "mainThreadMsMax",
+                      "asyncCpuMs"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "ts",
+                  "windowSeconds",
+                  "tick",
+                  "jvm",
+                  "world",
+                  "worstChunks",
+                  "players",
+                  "agentOverhead"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 1,
+              "maxItems": 60
+            }
+          },
+          "required": [
+            "samples"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "agentVersion",
+        "sentAt",
+        "bootId",
+        "payload"
+      ],
+      "additionalProperties": false,
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "eventsRequest": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "type": "number",
+          "const": 1
+        },
+        "agentVersion": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "sentAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "bootId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "events": {
+              "type": "array",
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "server_start"
+                      },
+                      "ts": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "uncleanPreviousShutdown": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "ts",
+                      "uncleanPreviousShutdown"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "server_stop"
+                      },
+                      "ts": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "reason": {
+                        "type": "string",
+                        "maxLength": 200
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "ts"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "crash"
+                      },
+                      "ts": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "detail": {
+                        "type": "string",
+                        "maxLength": 2000
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "ts"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "player_join"
+                      },
+                      "ts": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "playerId": {
+                        "type": "string",
+                        "minLength": 64,
+                        "maxLength": 64
+                      },
+                      "playerCount": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 2147483647
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "ts",
+                      "playerCount"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "player_leave"
+                      },
+                      "ts": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "playerId": {
+                        "type": "string",
+                        "minLength": 64,
+                        "maxLength": 64
+                      },
+                      "playerCount": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 2147483647
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "ts",
+                      "playerCount"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "cant_keep_up"
+                      },
+                      "ts": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "behindMs": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1000000000000000
+                      },
+                      "ticksSkipped": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 2147483647
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "ts",
+                      "behindMs",
+                      "ticksSkipped"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "exception"
+                      },
+                      "ts": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "plugin": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "exceptionClass": {
+                        "type": "string",
+                        "maxLength": 300
+                      },
+                      "message": {
+                        "type": "string",
+                        "maxLength": 500
+                      },
+                      "stackHash": {
+                        "type": "string",
+                        "maxLength": 64
+                      },
+                      "topFrames": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 300
+                        },
+                        "maxItems": 5
+                      },
+                      "count": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 2147483647
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "ts",
+                      "exceptionClass",
+                      "stackHash",
+                      "count"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "plugins_changed"
+                      },
+                      "ts": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "added": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 200
+                            },
+                            "version": {
+                              "type": "string",
+                              "maxLength": 100
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "version"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "maxItems": 500
+                      },
+                      "removed": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 200
+                            },
+                            "version": {
+                              "type": "string",
+                              "maxLength": 100
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "version"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "maxItems": 500
+                      },
+                      "updated": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 200
+                            },
+                            "from": {
+                              "type": "string",
+                              "maxLength": 100
+                            },
+                            "to": {
+                              "type": "string",
+                              "maxLength": 100
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "from",
+                            "to"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "maxItems": 500
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "ts",
+                      "added",
+                      "removed",
+                      "updated"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "minItems": 1,
+              "maxItems": 500
+            }
+          },
+          "required": [
+            "events"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "agentVersion",
+        "sentAt",
+        "bootId",
+        "payload"
+      ],
+      "additionalProperties": false,
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "snapshotRequest": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "type": "number",
+          "const": 1
+        },
+        "agentVersion": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "sentAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "bootId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "trigger": {
+              "type": "string",
+              "enum": [
+                "threshold",
+                "manual",
+                "requested"
+              ]
+            },
+            "ts": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "msptP95AtTrigger": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1000000000000000
+            },
+            "sample": {
+              "type": "object",
+              "properties": {
+                "ts": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "windowSeconds": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 300
+                },
+                "tick": {
+                  "type": "object",
+                  "properties": {
+                    "tps1m": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1000000000000000
+                    },
+                    "tps5m": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1000000000000000
+                    },
+                    "tps15m": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1000000000000000
+                    },
+                    "msptAvg": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1000000000000000
+                    },
+                    "msptP95": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1000000000000000
+                    },
+                    "msptP99": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1000000000000000
+                    },
+                    "msptMax": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1000000000000000
+                    },
+                    "tickCount": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 2147483647
+                    },
+                    "slowTicks": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "ts": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "durationMs": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1000000000000000
+                          }
+                        },
+                        "required": [
+                          "ts",
+                          "durationMs"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "tps1m",
+                    "tps5m",
+                    "tps15m",
+                    "msptAvg",
+                    "msptP95",
+                    "msptP99",
+                    "msptMax",
+                    "tickCount",
+                    "slowTicks"
+                  ],
+                  "additionalProperties": false
+                },
+                "jvm": {
+                  "type": "object",
+                  "properties": {
+                    "heapUsedBytes": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "heapCommittedBytes": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "heapMaxBytes": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "gcPauses": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "collector": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 200
+                          },
+                          "count": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 2147483647
+                          },
+                          "totalMs": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1000000000000000
+                          },
+                          "maxMs": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1000000000000000
+                          }
+                        },
+                        "required": [
+                          "collector",
+                          "count",
+                          "totalMs",
+                          "maxMs"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "maxItems": 10
+                    },
+                    "threadCount": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 2147483647
+                    },
+                    "processCpuLoad": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    }
+                  },
+                  "required": [
+                    "heapUsedBytes",
+                    "heapCommittedBytes",
+                    "heapMaxBytes",
+                    "gcPauses",
+                    "threadCount",
+                    "processCpuLoad"
+                  ],
+                  "additionalProperties": false
+                },
+                "world": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 200
+                      },
+                      "loadedChunks": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 2147483647
+                      },
+                      "entities": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 2147483647
+                      },
+                      "entitiesByType": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 2147483647
+                        }
+                      },
+                      "tileEntitiesByType": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 2147483647
+                        }
+                      },
+                      "chunkGenPerMinute": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1000000000000000
+                      },
+                      "countsAgeSeconds": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1000000000000000
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "loadedChunks",
+                      "entities",
+                      "entitiesByType",
+                      "tileEntitiesByType",
+                      "countsAgeSeconds"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "maxItems": 100
+                },
+                "worstChunks": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "world": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 200
+                      },
+                      "x": {
+                        "type": "integer",
+                        "minimum": -2147483648,
+                        "maximum": 2147483647
+                      },
+                      "z": {
+                        "type": "integer",
+                        "minimum": -2147483648,
+                        "maximum": 2147483647
+                      },
+                      "entities": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 2147483647
+                      },
+                      "tileEntities": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 2147483647
+                      },
+                      "topEntityType": {
+                        "type": "string",
+                        "maxLength": 100
+                      }
+                    },
+                    "required": [
+                      "world",
+                      "x",
+                      "z",
+                      "entities",
+                      "tileEntities"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "maxItems": 10
+                },
+                "players": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 2147483647
+                    },
+                    "pings": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "minLength": 64,
+                            "maxLength": 64
+                          },
+                          "pingMs": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 2147483647
+                          }
+                        },
+                        "required": [
+                          "pingMs"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "maxItems": 1000
+                    }
+                  },
+                  "required": [
+                    "count"
+                  ],
+                  "additionalProperties": false
+                },
+                "host": {
+                  "type": "object",
+                  "properties": {
+                    "cpuLoad1m": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1000000000000000
+                    },
+                    "cpuUsage": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "cpuTempC": {
+                      "type": "number",
+                      "minimum": -50,
+                      "maximum": 150
+                    },
+                    "throttled": {
+                      "type": "object",
+                      "properties": {
+                        "now": {
+                          "type": "boolean"
+                        },
+                        "sinceBoot": {
+                          "type": "boolean"
+                        },
+                        "raw": {
+                          "type": "string",
+                          "maxLength": 20
+                        }
+                      },
+                      "required": [
+                        "now",
+                        "sinceBoot"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "memTotalBytes": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "memAvailableBytes": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "swapTotalBytes": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "swapUsedBytes": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "diskTotalBytes": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "diskUsedBytes": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "diskReadBytesPerSec": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1000000000000000
+                    },
+                    "diskWriteBytesPerSec": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1000000000000000
+                    },
+                    "netRxBytesPerSec": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1000000000000000
+                    },
+                    "netTxBytesPerSec": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1000000000000000
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "agentOverhead": {
+                  "type": "object",
+                  "properties": {
+                    "mainThreadMsPerTick": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1000000000000000
+                    },
+                    "mainThreadMsMax": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1000000000000000
+                    },
+                    "asyncCpuMs": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1000000000000000
+                    }
+                  },
+                  "required": [
+                    "mainThreadMsPerTick",
+                    "mainThreadMsMax",
+                    "asyncCpuMs"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "ts",
+                "windowSeconds",
+                "tick",
+                "jvm",
+                "world",
+                "worstChunks",
+                "players",
+                "agentOverhead"
+              ],
+              "additionalProperties": false
+            },
+            "worldsDetail": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "entitiesByType": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 2147483647
+                    }
+                  },
+                  "tileEntitiesByType": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 2147483647
+                    }
+                  },
+                  "topChunks": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "x": {
+                          "type": "integer",
+                          "minimum": -2147483648,
+                          "maximum": 2147483647
+                        },
+                        "z": {
+                          "type": "integer",
+                          "minimum": -2147483648,
+                          "maximum": 2147483647
+                        },
+                        "entities": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 2147483647
+                        },
+                        "tileEntities": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 2147483647
+                        },
+                        "byType": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 2147483647
+                          }
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "z",
+                        "entities",
+                        "tileEntities",
+                        "byType"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 50
+                  }
+                },
+                "required": [
+                  "name",
+                  "entitiesByType",
+                  "tileEntitiesByType",
+                  "topChunks"
+                ],
+                "additionalProperties": false
+              },
+              "maxItems": 100
+            },
+            "threads": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "state": {
+                    "type": "string",
+                    "maxLength": 30
+                  },
+                  "cpuMs": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1000000000000000
+                  }
+                },
+                "required": [
+                  "name",
+                  "state"
+                ],
+                "additionalProperties": false
+              },
+              "maxItems": 20
+            },
+            "recentEvents": {
+              "type": "array",
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "server_start"
+                      },
+                      "ts": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "uncleanPreviousShutdown": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "ts",
+                      "uncleanPreviousShutdown"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "server_stop"
+                      },
+                      "ts": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "reason": {
+                        "type": "string",
+                        "maxLength": 200
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "ts"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "crash"
+                      },
+                      "ts": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "detail": {
+                        "type": "string",
+                        "maxLength": 2000
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "ts"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "player_join"
+                      },
+                      "ts": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "playerId": {
+                        "type": "string",
+                        "minLength": 64,
+                        "maxLength": 64
+                      },
+                      "playerCount": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 2147483647
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "ts",
+                      "playerCount"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "player_leave"
+                      },
+                      "ts": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "playerId": {
+                        "type": "string",
+                        "minLength": 64,
+                        "maxLength": 64
+                      },
+                      "playerCount": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 2147483647
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "ts",
+                      "playerCount"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "cant_keep_up"
+                      },
+                      "ts": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "behindMs": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1000000000000000
+                      },
+                      "ticksSkipped": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 2147483647
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "ts",
+                      "behindMs",
+                      "ticksSkipped"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "exception"
+                      },
+                      "ts": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "plugin": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "exceptionClass": {
+                        "type": "string",
+                        "maxLength": 300
+                      },
+                      "message": {
+                        "type": "string",
+                        "maxLength": 500
+                      },
+                      "stackHash": {
+                        "type": "string",
+                        "maxLength": 64
+                      },
+                      "topFrames": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 300
+                        },
+                        "maxItems": 5
+                      },
+                      "count": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 2147483647
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "ts",
+                      "exceptionClass",
+                      "stackHash",
+                      "count"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "plugins_changed"
+                      },
+                      "ts": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "added": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 200
+                            },
+                            "version": {
+                              "type": "string",
+                              "maxLength": 100
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "version"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "maxItems": 500
+                      },
+                      "removed": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 200
+                            },
+                            "version": {
+                              "type": "string",
+                              "maxLength": 100
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "version"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "maxItems": 500
+                      },
+                      "updated": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 200
+                            },
+                            "from": {
+                              "type": "string",
+                              "maxLength": 100
+                            },
+                            "to": {
+                              "type": "string",
+                              "maxLength": 100
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "from",
+                            "to"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "maxItems": 500
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "ts",
+                      "added",
+                      "removed",
+                      "updated"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "maxItems": 500
+            }
+          },
+          "required": [
+            "trigger",
+            "ts",
+            "msptP95AtTrigger",
+            "sample",
+            "worldsDetail",
+            "recentEvents"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "agentVersion",
+        "sentAt",
+        "bootId",
+        "payload"
+      ],
+      "additionalProperties": false,
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "ingestAccepted": {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "type": "boolean",
+          "const": true
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "metricsIntervalSeconds": {
+              "type": "integer",
+              "minimum": 5,
+              "maximum": 300
+            },
+            "snapshotMsptThreshold": {
+              "type": "number",
+              "minimum": 20,
+              "maximum": 1000
+            },
+            "requestSnapshot": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "ok"
+      ],
+      "additionalProperties": false,
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "ingestRejected": {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "type": "boolean",
+          "const": false
+        },
+        "error": {
+          "type": "string",
+          "enum": [
+            "invalid_key",
+            "revoked_key",
+            "invalid_payload",
+            "rate_limited",
+            "plan_limit",
+            "payload_too_large"
+          ]
+        },
+        "message": {
+          "type": "string"
+        },
+        "retryAfterSeconds": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "ok",
+        "error"
+      ],
+      "additionalProperties": false,
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    }
+  }
+}
