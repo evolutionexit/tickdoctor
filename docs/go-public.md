@@ -4,7 +4,7 @@
 Prices below were checked on 2026-11-09 from third-party summaries. Check the provider's own pricing page before choosing.
 
 ## 0. Security and repo hygiene (before ANY public step)
-- [ ] **Squash into a FRESH repo** before making anything public. The current history contains personal infrastructure details (Pi SSH address, Tailscale IPs and MagicDNS name, home paths) and was not scrubbed. Do not just flip this repo to public.
+- [x] **Squash into a FRESH repo** — DONE 2026-11-14 (private repo `evolutionexit/tickdoctor`, single "Initial commit", force-pushed; the old history exists only in a local backup bundle outside the repo — delete it when no longer needed). Re-do a final check (gitleaks, personal values) right before flipping the repo to public. Original note: The current history contains personal infrastructure details (Pi SSH address, Tailscale IPs and MagicDNS name, home paths) and was not scrubbed. Do not just flip this repo to public.
 - [ ] **Run a real `gitleaks` scan** of the fresh repo before it goes public. First real run 2026-11-14 on this repo (gitleaks via docker, `detect --log-opts=--all`, 228 commits): 2 hits, both test fixtures (a fake pepper in `apps/api/test/auth.test.ts` and a fake agent key constant in `apps/api/test/ingest.test.ts`), no real secrets. Add a `.gitleaksignore` for them in the fresh repo.
 - [ ] **CSP: remove `'unsafe-inline'`** by moving to a nonce-based CSP. **BEFORE PAID LAUNCH** (can wait for the free waitlist phase).
 - [ ] **zod 3.25.76 advisory GHSA-mrhx-c7xc-m3w5 is deferred** (see `docs/security.md` once written). Revisit with the zod 4 migration.
